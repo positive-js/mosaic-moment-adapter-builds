@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { DateAdapter } from '@ptsecurity/cdk/datetime';
+import { DateAdapter, IFormatterRangeTemplate, IFormatterRelativeTemplate, IFormatterAbsoluteTemplate } from '@ptsecurity/cdk/datetime';
 import { Moment } from 'moment';
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface IMcMomentDateAdapterOptions {
@@ -16,6 +16,10 @@ export declare const MC_MOMENT_DATE_ADAPTER_OPTIONS: InjectionToken<IMcMomentDat
 export declare function MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY(): IMcMomentDateAdapterOptions;
 export declare class MomentDateAdapter extends DateAdapter<Moment> {
     private options?;
+    private messageformat;
+    private readonly invalidDateErrorText;
+    private formatterConfig;
+    private readonly momentWithLocale;
     private localeData;
     constructor(dateLocale: string, options?: IMcMomentDateAdapterOptions | undefined);
     setLocale(locale: string): void;
@@ -43,6 +47,25 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     isDateInstance(obj: any): boolean;
     isValid(date: Moment): boolean;
     invalid(): Moment;
+    relativeDate(date: Moment, template: IFormatterRelativeTemplate): string;
+    relativeShortDate(date: Moment): string;
+    relativeLongDate(date: Moment): string;
+    absoluteDate(date: Moment, params: IFormatterAbsoluteTemplate, datetime?: boolean): string;
+    absoluteShortDate(date: Moment): string;
+    absoluteShortDateTime(date: Moment): string;
+    absoluteLongDate(date: Moment): string;
+    absoluteLongDateTime(date: Moment): string;
+    rangeDate(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;
+    rangeDateTime(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;
+    rangeShortDate(startDate: Moment, endDate: Moment): string;
+    rangeShortDateTime(startDate: Moment, endDate: Moment): string;
+    rangeLongDate(startDate: Moment, endDate: Moment): string;
+    rangeLongDateTime(startDate: Moment, endDate: Moment): string;
+    rangeMiddleDateTime(startDate: Moment, endDate: Moment): string;
     /** Creates a Moment instance while respecting the current UTC settings. */
     private createMoment;
+    private compileVariables;
+    private isCurrentYear;
+    private isSame;
+    private configureTranslator;
 }

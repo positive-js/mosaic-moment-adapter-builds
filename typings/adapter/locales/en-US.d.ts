@@ -1,2 +1,2 @@
-import { IFormatterConfig } from '../mosaic-date-formatter-configs';
+import { IFormatterConfig } from './IFormatterConfig';
 export declare const enUS: IFormatterConfig;
