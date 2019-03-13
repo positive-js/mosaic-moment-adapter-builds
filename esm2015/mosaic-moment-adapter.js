@@ -4,13 +4,17 @@
  *
  * Use of this source code is governed by an MIT-style license.
  */
-import { __decorate, __param, __metadata } from 'tslib';
 import { Inject, Injectable, InjectionToken, Optional, NgModule } from '@angular/core';
 import { DateAdapter, MC_DATE_LOCALE, MC_DATE_FORMATS } from '@ptsecurity/cdk/datetime';
 import * as MessageFormat from 'messageformat';
 import * as _rollupMoment from 'moment';
 import _rollupMoment__default, {  } from 'moment';
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
 const enUS = {
     variables: {
         SECONDS: 's',
@@ -227,6 +231,11 @@ const enUS = {
     }
 };
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
 const ruRU = {
     variables: {
         SECONDS: 's',
@@ -444,28 +453,50 @@ const ruRU = {
     }
 };
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
 const moment = _rollupMoment__default || _rollupMoment;
-/** InjectionToken for moment date adapter to configure options. */
+/**
+ * InjectionToken for moment date adapter to configure options.
+ * @type {?}
+ */
 const MC_MOMENT_DATE_ADAPTER_OPTIONS = new InjectionToken('MC_MOMENT_DATE_ADAPTER_OPTIONS', {
     providedIn: 'root',
     factory: MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY
 });
-/** @docs-private */
+/**
+ * \@docs-private
+ * @return {?}
+ */
 // tslint:disable:naming-convention
 function MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY() {
     return {
         useUtc: false
     };
 }
-/** Creates an array and fills it with values. */
+/**
+ * Creates an array and fills it with values.
+ * @template T
+ * @param {?} length
+ * @param {?} valueFunction
+ * @return {?}
+ */
 function range(length, valueFunction) {
+    /** @type {?} */
     const valuesArray = Array(length);
     for (let i = 0; i < length; i++) {
         valuesArray[i] = valueFunction(i);
     }
     return valuesArray;
 }
-let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
+class MomentDateAdapter extends DateAdapter {
+    /**
+     * @param {?} dateLocale
+     * @param {?=} options
+     */
     constructor(dateLocale, options) {
         super();
         this.options = options;
@@ -473,13 +504,23 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         this.setLocale(dateLocale || moment.locale());
         this.configureTranslator(this.locale);
     }
+    /**
+     * @private
+     * @return {?}
+     */
     get momentWithLocale() {
         return moment().locale(this.locale);
     }
+    /**
+     * @param {?} locale
+     * @return {?}
+     */
     setLocale(locale) {
         super.setLocale(locale);
+        /** @type {?} */
         let momentLocaleData = moment.localeData(locale);
         // This is our customs translations
+        /** @type {?} */
         const i18nLocals = ['en', 'ru'];
         if (i18nLocals.indexOf(locale) !== -1) {
             this.formatterConfig = locale === 'en' ? enUS : ruRU;
@@ -502,25 +543,52 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
             narrowDaysOfWeek: momentLocaleData.weekdaysMin()
         };
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getYear(date) {
         return this.clone(date).year();
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getMonth(date) {
         return this.clone(date).month();
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getDate(date) {
         return this.clone(date).date();
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getDayOfWeek(date) {
         return this.clone(date).day();
     }
+    /**
+     * @param {?} style
+     * @return {?}
+     */
     getMonthNames(style) {
         // Moment.js doesn't support narrow month names
         return style === 'long' ? this.localeData.longMonths : this.localeData.shortMonths;
     }
+    /**
+     * @return {?}
+     */
     getDateNames() {
         return this.localeData.dates;
     }
+    /**
+     * @param {?} style
+     * @return {?}
+     */
     getDayOfWeekNames(style) {
         if (style === 'long') {
             return this.localeData.longDaysOfWeek;
@@ -530,18 +598,39 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         }
         return this.localeData.narrowDaysOfWeek;
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getYearName(date) {
         return this.clone(date).format('YYYY');
     }
+    /**
+     * @return {?}
+     */
     getFirstDayOfWeek() {
         return this.localeData.firstDayOfWeek;
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getNumDaysInMonth(date) {
         return this.clone(date).daysInMonth();
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     clone(date) {
         return date.clone().locale(this.locale);
     }
+    /**
+     * @param {?} year
+     * @param {?} month
+     * @param {?} date
+     * @return {?}
+     */
     createDate(year, month, date) {
         // Moment.js will create an invalid date if any of the components are out of bounds, but we
         // explicitly check each case so we can throw more descriptive errors.
@@ -551,6 +640,7 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         if (date < 1) {
             throw Error(`Invalid date "${date}". Date has to be greater than 0.`);
         }
+        /** @type {?} */
         const result = this.createMoment({ year, month, date }).locale(this.locale);
         // If the result isn't valid, the date must have been out of bounds for this month.
         if (!result.isValid()) {
@@ -558,9 +648,17 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         }
         return result;
     }
+    /**
+     * @return {?}
+     */
     today() {
         return this.createMoment().locale(this.locale);
     }
+    /**
+     * @param {?} value
+     * @param {?} parseFormat
+     * @return {?}
+     */
     parse(value, parseFormat) {
         // tslint:disable:triple-equals
         if (value && typeof value == 'string') {
@@ -568,6 +666,11 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         }
         return value ? this.createMoment(value).locale(this.locale) : null;
     }
+    /**
+     * @param {?} date
+     * @param {?} displayFormat
+     * @return {?}
+     */
     format(date, displayFormat) {
         // tslint:disable:no-parameter-reassignment
         date = this.clone(date);
@@ -576,20 +679,44 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         }
         return date.format(displayFormat);
     }
+    /**
+     * @param {?} date
+     * @param {?} years
+     * @return {?}
+     */
     addCalendarYears(date, years) {
         return this.clone(date).add({ years });
     }
+    /**
+     * @param {?} date
+     * @param {?} months
+     * @return {?}
+     */
     addCalendarMonths(date, months) {
         return this.clone(date).add({ months });
     }
+    /**
+     * @param {?} date
+     * @param {?} days
+     * @return {?}
+     */
     addCalendarDays(date, days) {
         return this.clone(date).add({ days });
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     toIso8601(date) {
         return this.clone(date).format();
     }
-    /** https://www.ietf.org/rfc/rfc3339.txt */
+    /**
+     * https://www.ietf.org/rfc/rfc3339.txt
+     * @param {?} value
+     * @return {?}
+     */
     deserialize(value) {
+        /** @type {?} */
         let date;
         if (value instanceof Date) {
             date = this.createMoment(value).locale(this.locale);
@@ -609,26 +736,50 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         }
         return super.deserialize(value);
     }
+    /**
+     * @param {?} obj
+     * @return {?}
+     */
     isDateInstance(obj) {
         return moment.isMoment(obj);
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     isValid(date) {
         return this.clone(date).isValid();
     }
+    /**
+     * @return {?}
+     */
     invalid() {
         return moment.invalid();
     }
+    /**
+     * @param {?} date
+     * @param {?} template
+     * @return {?}
+     */
     relativeDate(date, template) {
         if (!this.isDateInstance(date)) {
             throw new Error(this.invalidDateErrorText);
         }
+        /** @type {?} */
         const now = this.momentWithLocale;
+        /** @type {?} */
         const totalSeconds = now.diff(date, 'seconds');
+        /** @type {?} */
         const totalMinutes = now.diff(date, 'minutes');
+        /** @type {?} */
         const isToday = now.isSame(date, 'day');
+        /** @type {?} */
         const isYesterday = now.add(-1, 'days').isSame(date, 'day');
+        /** @type {?} */
         const templateVariables = Object.assign({}, this.formatterConfig.variables, template.variables);
+        /** @type {?} */
         const variables = this.compileVariables(date, templateVariables);
+        /** @type {?} */
         let newTemplate;
         if (totalSeconds <= 59) { // seconds ago
             variables.SECONDS_PASSED = totalSeconds;
@@ -649,110 +800,227 @@ let MomentDateAdapter = class MomentDateAdapter extends DateAdapter {
         }
         return this.messageformat.compile(newTemplate)(variables);
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     relativeShortDate(date) {
         return this.relativeDate(date, this.formatterConfig.relativeTemplates.short);
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     relativeLongDate(date) {
         return this.relativeDate(date, this.formatterConfig.relativeTemplates.long);
     }
+    /**
+     * @param {?} date
+     * @param {?} params
+     * @param {?=} datetime
+     * @return {?}
+     */
     absoluteDate(date, params, datetime = false) {
         if (!this.isDateInstance(date)) {
             throw new Error(this.invalidDateErrorText);
         }
+        /** @type {?} */
         const variables = Object.assign({}, this.formatterConfig.variables, params.variables);
+        /** @type {?} */
         const template = datetime ? params.DATETIME : params.DATE;
         return this.messageformat.compile(template)(this.compileVariables(date, variables));
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     absoluteShortDate(date) {
         return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short);
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     absoluteShortDateTime(date) {
         return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true);
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     absoluteLongDate(date) {
         return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long);
     }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     absoluteLongDateTime(date) {
         return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @param {?} template
+     * @return {?}
+     */
     rangeDate(startDate, endDate, template) {
         if (!this.isDateInstance(startDate) || !this.isDateInstance(endDate)) {
             throw new Error(this.invalidDateErrorText);
         }
+        /** @type {?} */
         const variables = Object.assign({}, this.formatterConfig.variables, template.variables);
+        /** @type {?} */
         const sameMonth = this.isSame('month', startDate, endDate);
+        /** @type {?} */
         const startDateVariables = this.compileVariables(startDate, variables);
         startDateVariables.SAME_MONTH = sameMonth;
+        /** @type {?} */
         const endDateVariables = this.compileVariables(endDate, variables);
         endDateVariables.SAME_MONTH = sameMonth;
+        /** @type {?} */
         const params = Object.assign({}, variables, { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), SAME_MONTH: sameMonth });
         return this.messageformat.compile(template.DATE)(params);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @param {?} template
+     * @return {?}
+     */
     rangeDateTime(startDate, endDate, template) {
         if (!this.isDateInstance(startDate) || !this.isDateInstance(endDate)) {
             throw new Error(this.invalidDateErrorText);
         }
+        /** @type {?} */
         const variables = Object.assign({}, this.formatterConfig.variables, template.variables);
+        /** @type {?} */
         const sameMonth = this.isSame('month', startDate, endDate);
+        /** @type {?} */
         const sameDay = this.isSame('day', startDate, endDate);
+        /** @type {?} */
         const startDateVariables = this.compileVariables(startDate, variables);
         startDateVariables.SAME_MONTH = sameMonth;
         startDateVariables.SAME_DAY = sameDay;
+        /** @type {?} */
         const endDateVariables = this.compileVariables(endDate, variables);
         endDateVariables.SAME_MONTH = sameMonth;
         endDateVariables.SAME_DAY = sameDay;
+        /** @type {?} */
         const params = Object.assign({}, variables, { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), SAME_MONTH: sameMonth, SAME_DAY: sameDay });
         return this.messageformat.compile(template.DATETIME)(params);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @return {?}
+     */
     rangeShortDate(startDate, endDate) {
         return this.rangeDate(startDate, endDate, this.formatterConfig.rangeTemplates.short);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @return {?}
+     */
     rangeShortDateTime(startDate, endDate) {
         return this.rangeDateTime(startDate, endDate, this.formatterConfig.rangeTemplates.short);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @return {?}
+     */
     rangeLongDate(startDate, endDate) {
         return this.rangeDate(startDate, endDate, this.formatterConfig.rangeTemplates.long);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @return {?}
+     */
     rangeLongDateTime(startDate, endDate) {
         return this.rangeDateTime(startDate, endDate, this.formatterConfig.rangeTemplates.long);
     }
+    /**
+     * @param {?} startDate
+     * @param {?} endDate
+     * @return {?}
+     */
     rangeMiddleDateTime(startDate, endDate) {
         return this.rangeDateTime(startDate, endDate, this.formatterConfig.rangeTemplates.middle);
     }
-    /** Creates a Moment instance while respecting the current UTC settings. */
+    /**
+     * Creates a Moment instance while respecting the current UTC settings.
+     * @private
+     * @param {...?} args
+     * @return {?}
+     */
     createMoment(...args) {
         return (this.options && this.options.useUtc) ? moment.utc(...args) : moment(...args);
     }
+    /**
+     * @private
+     * @param {?} date
+     * @param {?} variables
+     * @return {?}
+     */
     compileVariables(date, variables) {
+        /** @type {?} */
         const compiledVariables = {};
         // tslint:disable-next-line:no-for-in
         for (const key in variables) {
             if (!variables.hasOwnProperty(key)) {
                 continue;
             }
+            /** @type {?} */
             const value = variables[key];
             compiledVariables[key] = date.format(value);
         }
         compiledVariables.CURRENT_YEAR = this.isCurrentYear(date);
         return compiledVariables;
     }
+    /**
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
     isCurrentYear(value) {
         return this.momentWithLocale.isSame(value, 'year') ? 'yes' : 'no';
     }
+    /**
+     * @private
+     * @param {?} unit
+     * @param {?} startDate
+     * @param {?} endDate
+     * @return {?}
+     */
     isSame(unit, startDate, endDate) {
         return startDate.isSame(endDate, unit) ? 'yes' : 'no';
     }
+    /**
+     * @private
+     * @param {?} locale
+     * @return {?}
+     */
     configureTranslator(locale) {
         this.messageformat = new MessageFormat(locale);
     }
-};
-MomentDateAdapter = __decorate([
-    Injectable(),
-    __param(0, Optional()), __param(0, Inject(MC_DATE_LOCALE)),
-    __param(1, Optional()), __param(1, Inject(MC_MOMENT_DATE_ADAPTER_OPTIONS)),
-    __metadata("design:paramtypes", [String, Object])
-], MomentDateAdapter);
+}
+MomentDateAdapter.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+MomentDateAdapter.ctorParameters = () => [
+    { type: String, decorators: [{ type: Optional }, { type: Inject, args: [MC_DATE_LOCALE,] }] },
+    { type: undefined, decorators: [{ type: Optional }, { type: Inject, args: [MC_MOMENT_DATE_ADAPTER_OPTIONS,] }] }
+];
 
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/** @type {?} */
 const MC_MOMENT_DATE_FORMATS = {
     parse: {
         dateInput: 'L'
@@ -765,34 +1033,44 @@ const MC_MOMENT_DATE_FORMATS = {
     }
 };
 
-let MomentDateModule = class MomentDateModule {
-};
-MomentDateModule = __decorate([
-    NgModule({
-        providers: [
-            {
-                provide: DateAdapter,
-                useClass: MomentDateAdapter,
-                deps: [MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
-            }
-        ]
-    })
-], MomentDateModule);
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class MomentDateModule {
+}
+MomentDateModule.decorators = [
+    { type: NgModule, args: [{
+                providers: [
+                    {
+                        provide: DateAdapter,
+                        useClass: MomentDateAdapter,
+                        deps: [MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
+                    }
+                ]
+            },] },
+];
 const ɵ0 = MC_MOMENT_DATE_FORMATS;
-let McMomentDateModule = class McMomentDateModule {
-};
-McMomentDateModule = __decorate([
-    NgModule({
-        imports: [MomentDateModule],
-        providers: [{
-                provide: MC_DATE_FORMATS, useValue: ɵ0
-            }]
-    })
-], McMomentDateModule);
+class McMomentDateModule {
+}
+McMomentDateModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [MomentDateModule],
+                providers: [{
+                        provide: MC_DATE_FORMATS, useValue: ɵ0
+                    }]
+            },] },
+];
 
 /**
- * Generated bundle index. Do not edit.
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
-export { MomentDateModule, McMomentDateModule, ɵ0, MC_MOMENT_DATE_ADAPTER_OPTIONS, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MomentDateAdapter, MC_MOMENT_DATE_FORMATS };
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+export { MomentDateModule, McMomentDateModule, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MC_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter, MC_MOMENT_DATE_FORMATS };
 //# sourceMappingURL=mosaic-moment-adapter.js.map
