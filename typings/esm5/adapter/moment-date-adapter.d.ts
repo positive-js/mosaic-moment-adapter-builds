@@ -8,6 +8,11 @@ export interface IMcMomentDateAdapterOptions {
      * {@default false}
      */
     useUtc: boolean;
+    /**
+     * whether should parse method try guess date format
+     * {@default false}
+     */
+    findDateFormat: boolean;
 }
 /** InjectionToken for moment date adapter to configure options. */
 export declare const MC_MOMENT_DATE_ADAPTER_OPTIONS: InjectionToken<IMcMomentDateAdapterOptions>;
@@ -67,4 +72,10 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     private isCurrentYear;
     private isSame;
     private configureTranslator;
+    private isNumeric;
+    private findFormat;
+    private parseWithSpace;
+    private parseWithSlash;
+    private parseWithDash;
+    private parseWithDot;
 }
