@@ -34,7 +34,10 @@ const enUS = {
             'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
             'October', 'November', 'December'
         ],
-        short: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        short: {
+            standalone: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            formatted: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
         narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
     },
     dayOfWeekNames: {
@@ -255,7 +258,10 @@ const ruRU = {
             'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь',
             'Октябрь', 'Ноябрь', 'Декабрь'
         ],
-        short: ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль', 'авг', 'сен', 'окт', 'ноя', 'дек'],
+        short: {
+            standalone: ['янв', 'фев', 'март', 'апр', 'май', 'июнь', 'июль', 'авг', 'сен', 'окт', 'ноя', 'дек'],
+            formatted: ['янв', 'фев', 'мар', 'апр', 'мая', 'июня', 'июля', 'авг', 'сен', 'окт', 'ноя', 'дек']
+        },
         narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д']
     },
     dayOfWeekNames: {
@@ -527,8 +533,8 @@ class MomentDateAdapter extends DateAdapter {
             this.formatterConfig = locale === 'en' ? enUS : ruRU;
             momentLocaleData = moment.updateLocale(locale, {
                 monthsShort: {
-                    format: this.formatterConfig.monthNames.short,
-                    standalone: this.formatterConfig.monthNames.short
+                    format: this.formatterConfig.monthNames.short.formatted,
+                    standalone: this.formatterConfig.monthNames.short.standalone
                 },
                 weekdaysShort: this.formatterConfig.dayOfWeekNames.short,
                 weekdays: this.formatterConfig.dayOfWeekNames.long

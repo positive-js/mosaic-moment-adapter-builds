@@ -5,7 +5,10 @@ export interface IFormatterConfig {
     };
     monthNames: {
         long: string[];
-        short: string[];
+        short: {
+            standalone: string[];
+            formatted: string[];
+        };
         narrow: string[];
     };
     dayOfWeekNames: {
