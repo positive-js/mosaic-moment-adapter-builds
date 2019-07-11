@@ -579,6 +579,41 @@ class MomentDateAdapter extends DateAdapter {
      * @param {?} date
      * @return {?}
      */
+    getHours(date) {
+        return this.clone(date).hours();
+    }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    getMinutes(date) {
+        return this.clone(date).minutes();
+    }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    getSeconds(date) {
+        return this.clone(date).seconds();
+    }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    getMilliseconds(date) {
+        return this.clone(date).milliseconds();
+    }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
+    getTime(date) {
+        return date.valueOf();
+    }
+    /**
+     * @param {?} date
+     * @return {?}
+     */
     getDayOfWeek(date) {
         return this.clone(date).day();
     }
@@ -658,6 +693,25 @@ class MomentDateAdapter extends DateAdapter {
             throw Error(`Invalid date "${date}" for month with index "${month}".`);
         }
         return result;
+    }
+    /**
+     * @param {?} year
+     * @param {?} month
+     * @param {?} date
+     * @param {?} hours
+     * @param {?} minutes
+     * @param {?} seconds
+     * @param {?} milliseconds
+     * @return {?}
+     */
+    createDateTime(year, month, date, hours, minutes, seconds, milliseconds) {
+        /** @type {?} */
+        const newDate = this.createDate(year, month, date);
+        newDate.hours(hours);
+        newDate.minutes(minutes);
+        newDate.seconds(seconds);
+        newDate.milliseconds(milliseconds);
+        return newDate;
     }
     /**
      * @return {?}

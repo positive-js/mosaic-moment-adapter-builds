@@ -30,6 +30,11 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     getYear(date: Moment): number;
     getMonth(date: Moment): number;
     getDate(date: Moment): number;
+    getHours(date: Moment): number;
+    getMinutes(date: Moment): number;
+    getSeconds(date: Moment): number;
+    getMilliseconds(date: Moment): number;
+    getTime(date: Moment): number;
     getDayOfWeek(date: Moment): number;
     getMonthNames(style: 'long' | 'short' | 'narrow'): string[];
     getDateNames(): string[];
@@ -39,6 +44,7 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     getNumDaysInMonth(date: Moment): number;
     clone(date: Moment): Moment;
     createDate(year: number, month: number, date: number): Moment;
+    createDateTime(year: number, month: number, date: number, hours: number, minutes: number, seconds: number, milliseconds: number): Moment;
     today(): Moment;
     parse(value: any, parseFormat: string | string[]): Moment | null;
     format(date: Moment, displayFormat: string): string;
