@@ -1,6 +1,6 @@
 {
     "name": "@ptsecurity/mosaic-moment-adapter",
-    "version": "8.0.0-33e2d24",
+    "version": "8.0.0-e4e24f6",
     "description": "Mosaic Moment Adapter",
     "main": "./bundles/mosaic-moment-adapter.umd.js",
     "module": "./esm5/mosaic-moment-adapter.es5.js",
@@ -16,9 +16,9 @@
     },
     "homepage": "https://github.com/positive-js/mosaic#readme",
     "peerDependencies": {
-        "@angular/core": ">=8.0.0-33e2d24",
-        "@angular/cdk": ">=8.0.0-33e2d24",
-        "@ptsecurity/cdk": "8.0.0-33e2d24",
+        "@angular/core": ">=8.0.0-e4e24f6",
+        "@angular/cdk": ">=8.0.0-e4e24f6",
+        "@ptsecurity/cdk": "8.0.0-e4e24f6",
         "messageformat": "^2.0.5",
         "moment": "^2.24.0"
     },
