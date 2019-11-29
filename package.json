@@ -1,6 +1,6 @@
 {
     "name": "@ptsecurity/mosaic-moment-adapter",
-    "version": "8.1.3-7b990e0",
+    "version": "8.1.3-1736acf4",
     "description": "Mosaic Moment Adapter",
     "main": "./bundles/mosaic-moment-adapter.umd.js",
     "module": "./esm5/mosaic-moment-adapter.es5.js",
@@ -18,7 +18,7 @@
     "peerDependencies": {
         "@angular/core": ">=8.0.0",
         "@angular/cdk": ">=8.0.0",
-        "@ptsecurity/cdk": "8.1.3-7b990e0",
+        "@ptsecurity/cdk": "8.1.3-1736acf4",
         "messageformat": "^2.0.5",
         "moment": "^2.24.0"
     },
