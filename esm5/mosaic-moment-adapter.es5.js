@@ -4,12 +4,12 @@
  *
  * Use of this source code is governed by an MIT-style license.
  */
+import { InjectionToken, Injectable, Optional, Inject, NgModule } from '@angular/core';
+import { MC_DATE_LOCALE, DateAdapter, MC_DATE_FORMATS } from '@ptsecurity/cdk/datetime';
 import { __extends, __assign } from 'tslib';
-import { Inject, Injectable, InjectionToken, Optional, NgModule } from '@angular/core';
-import { DateAdapter, MC_DATE_LOCALE, MC_DATE_FORMATS } from '@ptsecurity/cdk/datetime';
 import * as MessageFormat from 'messageformat';
 import * as _rollupMoment from 'moment';
-import _rollupMoment__default, {  } from 'moment';
+import _rollupMoment__default from 'moment';
 
 /**
  * @fileoverview added by tsickle
@@ -1294,15 +1294,5 @@ var McMomentDateModule = /** @class */ (function () {
     return McMomentDateModule;
 }());
 
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-
-export { MomentDateModule, McMomentDateModule, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MC_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter, MC_MOMENT_DATE_FORMATS };
+export { MC_MOMENT_DATE_ADAPTER_OPTIONS, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MC_MOMENT_DATE_FORMATS, McMomentDateModule, MomentDateAdapter, MomentDateModule };
 //# sourceMappingURL=mosaic-moment-adapter.es5.js.map
