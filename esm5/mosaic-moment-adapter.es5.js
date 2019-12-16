@@ -48,14 +48,14 @@ var enUS = {
     },
     relativeTemplates: {
         short: {
-            SECONDS_AGO: '{SECONDS_PASSED}{NBSP}s ago',
+            SECONDS_AGO: 'Just now',
             MINUTES_AGO: '{MINUTES_PASSED}{NBSP}min ago',
             TODAY: '{TIME}',
             YESTERDAY: 'Yesterday, {TIME}',
             BEFORE_YESTERDAY: '{CURRENT_YEAR, select, yes{{SHORT_DATE}, {TIME}} other{{SHORT_DATE}, {YEAR}}}'
         },
         long: {
-            SECONDS_AGO: '{SECONDS_PASSED, plural, =1{#{NBSP}second} other{#{NBSP}seconds}} ago',
+            SECONDS_AGO: 'Just now',
             MINUTES_AGO: '{MINUTES_PASSED, plural, =1{#{NBSP}minute} other{#{NBSP}minutes}} ago',
             TODAY: '{TIME}',
             YESTERDAY: 'Yesterday, {TIME}',
@@ -137,15 +137,14 @@ var ruRU = {
     },
     relativeTemplates: {
         short: {
-            SECONDS_AGO: '{SECONDS_PASSED}{NBSP}с назад',
+            SECONDS_AGO: 'Только что',
             MINUTES_AGO: '{MINUTES_PASSED}{NBSP}мин назад',
             TODAY: '{TIME}',
             YESTERDAY: 'Вчера, {TIME}',
             BEFORE_YESTERDAY: '{CURRENT_YEAR, select, yes{{SHORT_DATE}, {TIME}} other{{SHORT_DATE}, {YEAR}}}'
         },
         long: {
-            // tslint:disable-next-line:max-line-length
-            SECONDS_AGO: '{SECONDS_PASSED, plural, =1{#{NBSP}секунду} =2{#{NBSP}секунды} other{#{NBSP}секунд}} назад',
+            SECONDS_AGO: 'Только что',
             MINUTES_AGO: '{MINUTES_PASSED, plural, =1{#{NBSP}минуту} =2{#{NBSP}минуты} other{#{NBSP}минут}} назад',
             TODAY: '{TIME}',
             YESTERDAY: 'Вчера, {TIME}',
