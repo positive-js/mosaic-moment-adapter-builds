@@ -65,12 +65,14 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     absoluteShortDateTime(date: Moment): string;
     absoluteLongDate(date: Moment): string;
     absoluteLongDateTime(date: Moment): string;
+    openedRangeDate(startDate: Moment | null, endDate: Moment | null, template: IFormatterRangeTemplate): string;
+    openedRangeDateTime(startDate: Moment | null, endDate: Moment | null, template: IFormatterRangeTemplate): string;
     rangeDate(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;
     rangeDateTime(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;
-    rangeShortDate(startDate: Moment, endDate: Moment): string;
-    rangeShortDateTime(startDate: Moment, endDate: Moment): string;
-    rangeLongDate(startDate: Moment, endDate: Moment): string;
-    rangeLongDateTime(startDate: Moment, endDate: Moment): string;
+    rangeShortDate(startDate: Moment | null, endDate?: Moment): string;
+    rangeShortDateTime(startDate: Moment | null, endDate?: Moment): string;
+    rangeLongDate(startDate: Moment | null, endDate?: Moment): string;
+    rangeLongDateTime(startDate: Moment | null, endDate?: Moment): string;
     rangeMiddleDateTime(startDate: Moment, endDate: Moment): string;
     /** Creates a Moment instance while respecting the current UTC settings. */
     private createMoment;
