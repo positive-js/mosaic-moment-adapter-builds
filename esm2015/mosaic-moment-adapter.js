@@ -1102,7 +1102,6 @@ class MomentDateAdapter extends DateAdapter {
      * @return {?}
      */
     openedRangeDateTime(startDate, endDate, template) {
-        console.log('openedRangeDateTime: '); // tslint:disable-line:no-console
         if (!moment.isMoment(startDate) && !moment.isMoment(endDate)) {
             throw new Error(this.invalidDateErrorText);
         }
