@@ -1,29 +1,39 @@
 {
     "name": "@ptsecurity/mosaic-moment-adapter",
-    "version": "8.4.4-42e7e9b",
+    "version": "8.4.3-19c4bc35",
     "description": "Mosaic Moment Adapter",
-    "main": "./bundles/mosaic-moment-adapter.umd.js",
-    "module": "./esm5/mosaic-moment-adapter.es5.js",
-    "es2015": "./esm2015/mosaic-moment-adapter.js",
-    "typings": "./mosaic-moment-adapter.d.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/positive-js/mosaic.git"
     },
+    "keywords": [
+        "moment",
+        "component",
+        "development",
+        "kit",
+        "mosaic"
+    ],
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/positive-js/mosaic/issues"
     },
     "homepage": "https://github.com/positive-js/mosaic#readme",
     "peerDependencies": {
-        "@angular/core": ">=8.0.0",
-        "@angular/cdk": ">=8.0.0",
-        "@ptsecurity/cdk": "8.4.4-42e7e9b",
+        "@angular/core": "^9.1.0",
+        "@angular/cdk": "^9.1.0",
+        "@ptsecurity/cdk": "^8.4.3-19c4bc35",
         "messageformat": "^2.0.5",
-        "moment": "^2.24.0"
-    },
-    "dependencies": {
+        "moment": "^2.24.0",
         "tslib": "^1.7.1"
     },
+    "main": "bundles/ptsecurity-mosaic-moment-adapter.umd.js",
+    "module": "fesm5/ptsecurity-mosaic-moment-adapter.js",
+    "es2015": "fesm2015/ptsecurity-mosaic-moment-adapter.js",
+    "esm5": "esm5/ptsecurity-mosaic-moment-adapter.js",
+    "esm2015": "esm2015/ptsecurity-mosaic-moment-adapter.js",
+    "fesm5": "fesm5/ptsecurity-mosaic-moment-adapter.js",
+    "fesm2015": "fesm2015/ptsecurity-mosaic-moment-adapter.js",
+    "typings": "ptsecurity-mosaic-moment-adapter.d.ts",
+    "metadata": "ptsecurity-mosaic-moment-adapter.metadata.json",
     "sideEffects": false
 }
