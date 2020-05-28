@@ -1,6 +1,6 @@
 {
     "name": "@ptsecurity/mosaic-moment-adapter",
-    "version": "9.0.0-a6cf650",
+    "version": "9.0.0-55793aa",
     "description": "Mosaic Moment Adapter",
     "repository": {
         "type": "git",
@@ -21,10 +21,9 @@
     "peerDependencies": {
         "@angular/core": "^9.1.0",
         "@angular/cdk": "^9.2.1",
-        "@ptsecurity/cdk": "^9.0.0-a6cf650",
+        "@ptsecurity/cdk": "^9.0.0-55793aa",
         "messageformat": "^2.0.5",
-        "moment": "^2.24.0",
-        "tslib": "^1.7.1"
+        "moment": "^2.24.0"
     },
     "main": "bundles/ptsecurity-mosaic-moment-adapter.umd.js",
     "module": "fesm5/ptsecurity-mosaic-moment-adapter.js",
@@ -35,5 +34,8 @@
     "fesm2015": "fesm2015/ptsecurity-mosaic-moment-adapter.js",
     "typings": "ptsecurity-mosaic-moment-adapter.d.ts",
     "metadata": "ptsecurity-mosaic-moment-adapter.metadata.json",
-    "sideEffects": false
+    "sideEffects": false,
+    "dependencies": {
+        "tslib": "^1.7.1"
+    }
 }
