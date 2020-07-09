@@ -1,6 +1,6 @@
 {
     "name": "@ptsecurity/mosaic-moment-adapter",
-    "version": "9.1.1-3f5083bd",
+    "version": "9.1.2-8a13682",
     "description": "Mosaic Moment Adapter",
     "repository": {
         "type": "git",
@@ -21,7 +21,7 @@
     "peerDependencies": {
         "@angular/core": "^9.1.0",
         "@angular/cdk": "^9.2.1",
-        "@ptsecurity/cdk": "^9.1.1-3f5083bd",
+        "@ptsecurity/cdk": "^9.1.2-8a13682",
         "messageformat": "^2.0.5",
         "moment": "^2.24.0"
     },
