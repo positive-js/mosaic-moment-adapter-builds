@@ -7,7 +7,7 @@ import _rollupMoment__default from 'moment';
 /**
  * @fileoverview added by tsickle
  * Generated from: locales/en-US.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const enUS = {
@@ -302,7 +302,7 @@ const enUS = {
 /**
  * @fileoverview added by tsickle
  * Generated from: locales/ru-RU.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const ruRU = {
@@ -597,7 +597,7 @@ const ruRU = {
 /**
  * @fileoverview added by tsickle
  * Generated from: moment-date-adapter.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const moment = _rollupMoment__default || _rollupMoment;
@@ -1495,7 +1495,7 @@ if (false) {
 /**
  * @fileoverview added by tsickle
  * Generated from: moment-date-formats.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 /** @type {?} */
 const MC_MOMENT_DATE_FORMATS = {
@@ -1513,7 +1513,7 @@ const MC_MOMENT_DATE_FORMATS = {
 /**
  * @fileoverview added by tsickle
  * Generated from: index.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 class MomentDateModule {
 }
@@ -1535,7 +1535,8 @@ McMomentDateModule.decorators = [
     { type: NgModule, args: [{
                 imports: [MomentDateModule],
                 providers: [{
-                        provide: MC_DATE_FORMATS, useValue: ɵ0
+                        provide: MC_DATE_FORMATS,
+                        useValue: ɵ0
                     }]
             },] }
 ];
@@ -1543,7 +1544,7 @@ McMomentDateModule.decorators = [
 /**
  * @fileoverview added by tsickle
  * Generated from: ptsecurity-mosaic-moment-adapter-adapter.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
 
 export { MC_MOMENT_DATE_ADAPTER_OPTIONS, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MC_MOMENT_DATE_FORMATS, McMomentDateModule, MomentDateAdapter, MomentDateModule };

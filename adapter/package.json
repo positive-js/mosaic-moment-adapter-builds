@@ -1,10 +1,8 @@
 {
   "main": "../bundles/ptsecurity-mosaic-moment-adapter-adapter.umd.js",
-  "module": "../fesm5/ptsecurity-mosaic-moment-adapter-adapter.js",
+  "module": "../fesm2015/ptsecurity-mosaic-moment-adapter-adapter.js",
   "es2015": "../fesm2015/ptsecurity-mosaic-moment-adapter-adapter.js",
-  "esm5": "../esm5/adapter/ptsecurity-mosaic-moment-adapter-adapter.js",
   "esm2015": "../esm2015/adapter/ptsecurity-mosaic-moment-adapter-adapter.js",
-  "fesm5": "../fesm5/ptsecurity-mosaic-moment-adapter-adapter.js",
   "fesm2015": "../fesm2015/ptsecurity-mosaic-moment-adapter-adapter.js",
   "typings": "ptsecurity-mosaic-moment-adapter-adapter.d.ts",
   "metadata": "ptsecurity-mosaic-moment-adapter-adapter.metadata.json",

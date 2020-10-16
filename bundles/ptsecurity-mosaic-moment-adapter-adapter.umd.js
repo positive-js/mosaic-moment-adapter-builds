@@ -1,10 +1,34 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ptsecurity/cdk/datetime'), require('messageformat'), require('moment')) :
     typeof define === 'function' && define.amd ? define('@ptsecurity/mosaic-moment-adapter/adapter', ['exports', '@angular/core', '@ptsecurity/cdk/datetime', 'messageformat', 'moment'], factory) :
-    (global = global || self, factory((global.ptsecurity = global.ptsecurity || {}, global.ptsecurity['mosaic-moment-adapter'] = global.ptsecurity['mosaic-moment-adapter'] || {}, global.ptsecurity['mosaic-moment-adapter'].adapter = {}), global.ng.core, global.datetime, global.MessageFormat, global._rollupMoment__default));
-}(this, (function (exports, core, datetime, MessageFormat, _rollupMoment__default) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ptsecurity = global.ptsecurity || {}, global.ptsecurity['mosaic-moment-adapter'] = global.ptsecurity['mosaic-moment-adapter'] || {}, global.ptsecurity['mosaic-moment-adapter'].adapter = {}), global.ng.core, global.datetime, global.MessageFormat, global._rollupMoment));
+}(this, (function (exports, core, datetime, MessageFormat, _rollupMoment) { 'use strict';
 
-    var _rollupMoment__default__default = 'default' in _rollupMoment__default ? _rollupMoment__default['default'] : _rollupMoment__default;
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+    function _interopNamespace(e) {
+        if (e && e.__esModule) return e;
+        var n = Object.create(null);
+        if (e) {
+            Object.keys(e).forEach(function (k) {
+                if (k !== 'default') {
+                    var d = Object.getOwnPropertyDescriptor(e, k);
+                    Object.defineProperty(n, k, d.get ? d : {
+                        enumerable: true,
+                        get: function () {
+                            return e[k];
+                        }
+                    });
+                }
+            });
+        }
+        n['default'] = e;
+        return Object.freeze(n);
+    }
+
+    var MessageFormat__namespace = /*#__PURE__*/_interopNamespace(MessageFormat);
+    var _rollupMoment__default = /*#__PURE__*/_interopDefaultLegacy(_rollupMoment);
+    var _rollupMoment__namespace = /*#__PURE__*/_interopNamespace(_rollupMoment);
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -21,35 +45,36 @@
     PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
     /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
+    var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b)
+                if (Object.prototype.hasOwnProperty.call(b, p))
+                    d[p] = b[p]; };
         return extendStatics(d, b);
     };
-
     function __extends(d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
-
-    var __assign = function() {
+    var __assign = function () {
         __assign = Object.assign || function __assign(t) {
             for (var s, i = 1, n = arguments.length; i < n; i++) {
                 s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+                for (var p in s)
+                    if (Object.prototype.hasOwnProperty.call(s, p))
+                        t[p] = s[p];
             }
             return t;
         };
         return __assign.apply(this, arguments);
     };
-
     function __rest(s, e) {
         var t = {};
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
+        for (var p in s)
+            if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+                t[p] = s[p];
         if (s != null && typeof Object.getOwnPropertySymbols === "function")
             for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
                 if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
@@ -57,166 +82,247 @@
             }
         return t;
     }
-
     function __decorate(decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+            r = Reflect.decorate(decorators, target, key, desc);
+        else
+            for (var i = decorators.length - 1; i >= 0; i--)
+                if (d = decorators[i])
+                    r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     }
-
     function __param(paramIndex, decorator) {
-        return function (target, key) { decorator(target, key, paramIndex); }
+        return function (target, key) { decorator(target, key, paramIndex); };
     }
-
     function __metadata(metadataKey, metadataValue) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+            return Reflect.metadata(metadataKey, metadataValue);
     }
-
     function __awaiter(thisArg, _arguments, P, generator) {
         function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
         return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function fulfilled(value) { try {
+                step(generator.next(value));
+            }
+            catch (e) {
+                reject(e);
+            } }
+            function rejected(value) { try {
+                step(generator["throw"](value));
+            }
+            catch (e) {
+                reject(e);
+            } }
             function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
             step((generator = generator.apply(thisArg, _arguments || [])).next());
         });
     }
-
     function __generator(thisArg, body) {
-        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        var _ = { label: 0, sent: function () { if (t[0] & 1)
+                throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
         function verb(n) { return function (v) { return step([n, v]); }; }
         function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-                if (y = 0, t) op = [op[0] & 2, t.value];
-                switch (op[0]) {
-                    case 0: case 1: t = op; break;
-                    case 4: _.label++; return { value: op[1], done: false };
-                    case 5: _.label++; y = op[1]; op = [0]; continue;
-                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                    default:
-                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                        if (t[2]) _.ops.pop();
-                        _.trys.pop(); continue;
+            if (f)
+                throw new TypeError("Generator is already executing.");
+            while (_)
+                try {
+                    if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done)
+                        return t;
+                    if (y = 0, t)
+                        op = [op[0] & 2, t.value];
+                    switch (op[0]) {
+                        case 0:
+                        case 1:
+                            t = op;
+                            break;
+                        case 4:
+                            _.label++;
+                            return { value: op[1], done: false };
+                        case 5:
+                            _.label++;
+                            y = op[1];
+                            op = [0];
+                            continue;
+                        case 7:
+                            op = _.ops.pop();
+                            _.trys.pop();
+                            continue;
+                        default:
+                            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                                _ = 0;
+                                continue;
+                            }
+                            if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) {
+                                _.label = op[1];
+                                break;
+                            }
+                            if (op[0] === 6 && _.label < t[1]) {
+                                _.label = t[1];
+                                t = op;
+                                break;
+                            }
+                            if (t && _.label < t[2]) {
+                                _.label = t[2];
+                                _.ops.push(op);
+                                break;
+                            }
+                            if (t[2])
+                                _.ops.pop();
+                            _.trys.pop();
+                            continue;
+                    }
+                    op = body.call(thisArg, _);
                 }
-                op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+                catch (e) {
+                    op = [6, e];
+                    y = 0;
+                }
+                finally {
+                    f = t = 0;
+                }
+            if (op[0] & 5)
+                throw op[1];
+            return { value: op[0] ? op[1] : void 0, done: true };
         }
     }
-
-    function __createBinding(o, m, k, k2) {
-        if (k2 === undefined) k2 = k;
+    var __createBinding = Object.create ? (function (o, m, k, k2) {
+        if (k2 === undefined)
+            k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function () { return m[k]; } });
+    }) : (function (o, m, k, k2) {
+        if (k2 === undefined)
+            k2 = k;
         o[k2] = m[k];
+    });
+    function __exportStar(m, o) {
+        for (var p in m)
+            if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p))
+                __createBinding(o, m, p);
     }
-
-    function __exportStar(m, exports) {
-        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
-    }
-
     function __values(o) {
         var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-        if (m) return m.call(o);
-        if (o && typeof o.length === "number") return {
-            next: function () {
-                if (o && i >= o.length) o = void 0;
-                return { value: o && o[i++], done: !o };
-            }
-        };
+        if (m)
+            return m.call(o);
+        if (o && typeof o.length === "number")
+            return {
+                next: function () {
+                    if (o && i >= o.length)
+                        o = void 0;
+                    return { value: o && o[i++], done: !o };
+                }
+            };
         throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
     }
-
     function __read(o, n) {
         var m = typeof Symbol === "function" && o[Symbol.iterator];
-        if (!m) return o;
+        if (!m)
+            return o;
         var i = m.call(o), r, ar = [], e;
         try {
-            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
+                ar.push(r.value);
         }
-        catch (error) { e = { error: error }; }
+        catch (error) {
+            e = { error: error };
+        }
         finally {
             try {
-                if (r && !r.done && (m = i["return"])) m.call(i);
+                if (r && !r.done && (m = i["return"]))
+                    m.call(i);
             }
-            finally { if (e) throw e.error; }
+            finally {
+                if (e)
+                    throw e.error;
+            }
         }
         return ar;
     }
-
     function __spread() {
         for (var ar = [], i = 0; i < arguments.length; i++)
             ar = ar.concat(__read(arguments[i]));
         return ar;
     }
-
     function __spreadArrays() {
-        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++)
+            s += arguments[i].length;
         for (var r = Array(s), k = 0, i = 0; i < il; i++)
             for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
                 r[k] = a[j];
         return r;
-    };
-
+    }
+    ;
     function __await(v) {
         return this instanceof __await ? (this.v = v, this) : new __await(v);
     }
-
     function __asyncGenerator(thisArg, _arguments, generator) {
-        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        if (!Symbol.asyncIterator)
+            throw new TypeError("Symbol.asyncIterator is not defined.");
         var g = generator.apply(thisArg, _arguments || []), i, q = [];
         return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function verb(n) { if (g[n])
+            i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try {
+            step(g[n](v));
+        }
+        catch (e) {
+            settle(q[0][3], e);
+        } }
         function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
         function fulfill(value) { resume("next", value); }
         function reject(value) { resume("throw", value); }
-        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+        function settle(f, v) { if (f(v), q.shift(), q.length)
+            resume(q[0][0], q[0][1]); }
     }
-
     function __asyncDelegator(o) {
         var i, p;
         return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
         function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
     }
-
     function __asyncValues(o) {
-        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        if (!Symbol.asyncIterator)
+            throw new TypeError("Symbol.asyncIterator is not defined.");
         var m = o[Symbol.asyncIterator], i;
         return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
         function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function (v) { resolve({ value: v, done: d }); }, reject); }
     }
-
     function __makeTemplateObject(cooked, raw) {
-        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        if (Object.defineProperty) {
+            Object.defineProperty(cooked, "raw", { value: raw });
+        }
+        else {
+            cooked.raw = raw;
+        }
         return cooked;
+    }
+    ;
+    var __setModuleDefault = Object.create ? (function (o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function (o, v) {
+        o["default"] = v;
     };
-
     function __importStar(mod) {
-        if (mod && mod.__esModule) return mod;
+        if (mod && mod.__esModule)
+            return mod;
         var result = {};
-        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-        result.default = mod;
+        if (mod != null)
+            for (var k in mod)
+                if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
+                    __createBinding(result, mod, k);
+        __setModuleDefault(result, mod);
         return result;
     }
-
     function __importDefault(mod) {
         return (mod && mod.__esModule) ? mod : { default: mod };
     }
-
     function __classPrivateFieldGet(receiver, privateMap) {
         if (!privateMap.has(receiver)) {
             throw new TypeError("attempted to get private field on non-instance");
         }
         return privateMap.get(receiver);
     }
-
     function __classPrivateFieldSet(receiver, privateMap, value) {
         if (!privateMap.has(receiver)) {
             throw new TypeError("attempted to set private field on non-instance");
@@ -228,7 +334,7 @@
     /**
      * @fileoverview added by tsickle
      * Generated from: locales/en-US.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /** @type {?} */
     var enUS = {
@@ -338,7 +444,7 @@
     /**
      * @fileoverview added by tsickle
      * Generated from: locales/ru-RU.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /** @type {?} */
     var ruRU = {
@@ -445,13 +551,8 @@
         }
     };
 
-    /**
-     * @fileoverview added by tsickle
-     * Generated from: moment-date-adapter.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     /** @type {?} */
-    var moment = _rollupMoment__default__default || _rollupMoment__default;
+    var moment = _rollupMoment__default['default'] || _rollupMoment__namespace;
     /**
      * Configurable options for {\@see MomentDateAdapter}.
      * @record
@@ -507,6 +608,10 @@
     }
     var MomentDateAdapter = /** @class */ (function (_super) {
         __extends(MomentDateAdapter, _super);
+        /**
+         * @param {?} dateLocale
+         * @param {?=} options
+         */
         function MomentDateAdapter(dateLocale, options) {
             var _this = _super.call(this) || this;
             _this.options = options;
@@ -516,25 +621,21 @@
             return _this;
         }
         Object.defineProperty(MomentDateAdapter.prototype, "momentWithLocale", {
-            get: /**
+            /**
              * @private
              * @return {?}
              */
-            function () {
+            get: function () {
                 return moment().locale(this.locale);
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         /**
          * @param {?} locale
          * @return {?}
          */
-        MomentDateAdapter.prototype.setLocale = /**
-         * @param {?} locale
-         * @return {?}
-         */
-        function (locale) {
+        MomentDateAdapter.prototype.setLocale = function (locale) {
             var _this = this;
             _super.prototype.setLocale.call(this, locale);
             /** @type {?} */
@@ -557,11 +658,10 @@
                 firstDayOfWeek: momentLocaleData.firstDayOfWeek(),
                 longMonths: momentLocaleData.months(),
                 shortMonths: momentLocaleData.monthsShort(),
-                dates: range(31, (/**
+                dates: range(31, ( /**
                  * @param {?} i
                  * @return {?}
-                 */
-                function (i) { return _this.createDate(2017, 0, i + 1).format('D'); })),
+                 */function (i) { return _this.createDate(2017, 0, i + 1).format('D'); })),
                 longDaysOfWeek: momentLocaleData.weekdays(),
                 shortDaysOfWeek: momentLocaleData.weekdaysShort(),
                 narrowDaysOfWeek: momentLocaleData.weekdaysMin()
@@ -571,131 +671,84 @@
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getYear = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getYear = function (date) {
             return this.clone(date).year();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getMonth = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getMonth = function (date) {
             return this.clone(date).month();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getDate = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getDate = function (date) {
             return this.clone(date).date();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getHours = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getHours = function (date) {
             return this.clone(date).hours();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getMinutes = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getMinutes = function (date) {
             return this.clone(date).minutes();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getSeconds = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getSeconds = function (date) {
             return this.clone(date).seconds();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getMilliseconds = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getMilliseconds = function (date) {
             return this.clone(date).milliseconds();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getTime = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getTime = function (date) {
             return date.valueOf();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getDayOfWeek = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getDayOfWeek = function (date) {
             return this.clone(date).day();
         };
         /**
          * @param {?} style
          * @return {?}
          */
-        MomentDateAdapter.prototype.getMonthNames = /**
-         * @param {?} style
-         * @return {?}
-         */
-        function (style) {
+        MomentDateAdapter.prototype.getMonthNames = function (style) {
             // Moment.js doesn't support narrow month names
             return style === 'long' ? this.localeData.longMonths : this.localeData.shortMonths;
         };
         /**
          * @return {?}
          */
-        MomentDateAdapter.prototype.getDateNames = /**
-         * @return {?}
-         */
-        function () {
+        MomentDateAdapter.prototype.getDateNames = function () {
             return this.localeData.dates;
         };
         /**
          * @param {?} style
          * @return {?}
          */
-        MomentDateAdapter.prototype.getDayOfWeekNames = /**
-         * @param {?} style
-         * @return {?}
-         */
-        function (style) {
+        MomentDateAdapter.prototype.getDayOfWeekNames = function (style) {
             if (style === 'long') {
                 return this.localeData.longDaysOfWeek;
             }
@@ -708,42 +761,27 @@
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getYearName = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getYearName = function (date) {
             return this.clone(date).format('YYYY');
         };
         /**
          * @return {?}
          */
-        MomentDateAdapter.prototype.getFirstDayOfWeek = /**
-         * @return {?}
-         */
-        function () {
+        MomentDateAdapter.prototype.getFirstDayOfWeek = function () {
             return this.localeData.firstDayOfWeek;
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.getNumDaysInMonth = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.getNumDaysInMonth = function (date) {
             return this.clone(date).daysInMonth();
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.clone = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.clone = function (date) {
             return date.clone().locale(this.locale);
         };
         /**
@@ -752,13 +790,7 @@
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.createDate = /**
-         * @param {?} year
-         * @param {?} month
-         * @param {?} date
-         * @return {?}
-         */
-        function (year, month, date) {
+        MomentDateAdapter.prototype.createDate = function (year, month, date) {
             // Moment.js will create an invalid date if any of the components are out of bounds, but we
             // explicitly check each case so we can throw more descriptive errors.
             if (month < 0 || month > 11) {
@@ -785,17 +817,7 @@
          * @param {?} milliseconds
          * @return {?}
          */
-        MomentDateAdapter.prototype.createDateTime = /**
-         * @param {?} year
-         * @param {?} month
-         * @param {?} date
-         * @param {?} hours
-         * @param {?} minutes
-         * @param {?} seconds
-         * @param {?} milliseconds
-         * @return {?}
-         */
-        function (year, month, date, hours, minutes, seconds, milliseconds) {
+        MomentDateAdapter.prototype.createDateTime = function (year, month, date, hours, minutes, seconds, milliseconds) {
             /** @type {?} */
             var newDate = this.createDate(year, month, date);
             newDate.hours(hours);
@@ -807,10 +829,7 @@
         /**
          * @return {?}
          */
-        MomentDateAdapter.prototype.today = /**
-         * @return {?}
-         */
-        function () {
+        MomentDateAdapter.prototype.today = function () {
             return this.createMoment().locale(this.locale);
         };
         /**
@@ -818,12 +837,7 @@
          * @param {?} parseFormat
          * @return {?}
          */
-        MomentDateAdapter.prototype.parse = /**
-         * @param {?} value
-         * @param {?} parseFormat
-         * @return {?}
-         */
-        function (value, parseFormat) {
+        MomentDateAdapter.prototype.parse = function (value, parseFormat) {
             if (value) {
                 if (value && typeof value === 'string') {
                     if (this.options && this.options.findDateFormat) {
@@ -842,12 +856,7 @@
          * @param {?} displayFormat
          * @return {?}
          */
-        MomentDateAdapter.prototype.format = /**
-         * @param {?} date
-         * @param {?} displayFormat
-         * @return {?}
-         */
-        function (date, displayFormat) {
+        MomentDateAdapter.prototype.format = function (date, displayFormat) {
             // tslint:disable:no-parameter-reassignment
             date = this.clone(date);
             if (!this.isValid(date)) {
@@ -860,12 +869,7 @@
          * @param {?} years
          * @return {?}
          */
-        MomentDateAdapter.prototype.addCalendarYears = /**
-         * @param {?} date
-         * @param {?} years
-         * @return {?}
-         */
-        function (date, years) {
+        MomentDateAdapter.prototype.addCalendarYears = function (date, years) {
             return this.clone(date).add({ years: years });
         };
         /**
@@ -873,12 +877,7 @@
          * @param {?} months
          * @return {?}
          */
-        MomentDateAdapter.prototype.addCalendarMonths = /**
-         * @param {?} date
-         * @param {?} months
-         * @return {?}
-         */
-        function (date, months) {
+        MomentDateAdapter.prototype.addCalendarMonths = function (date, months) {
             return this.clone(date).add({ months: months });
         };
         /**
@@ -886,37 +885,22 @@
          * @param {?} days
          * @return {?}
          */
-        MomentDateAdapter.prototype.addCalendarDays = /**
-         * @param {?} date
-         * @param {?} days
-         * @return {?}
-         */
-        function (date, days) {
+        MomentDateAdapter.prototype.addCalendarDays = function (date, days) {
             return this.clone(date).add({ days: days });
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.toIso8601 = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.toIso8601 = function (date) {
             return this.clone(date).format();
         };
-        /** https://www.ietf.org/rfc/rfc3339.txt */
         /**
          * https://www.ietf.org/rfc/rfc3339.txt
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.deserialize = /**
-         * https://www.ietf.org/rfc/rfc3339.txt
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.deserialize = function (value) {
             /** @type {?} */
             var date;
             if (value instanceof Date) {
@@ -941,31 +925,20 @@
          * @param {?} obj
          * @return {?}
          */
-        MomentDateAdapter.prototype.isDateInstance = /**
-         * @param {?} obj
-         * @return {?}
-         */
-        function (obj) {
+        MomentDateAdapter.prototype.isDateInstance = function (obj) {
             return moment.isMoment(obj);
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.isValid = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.isValid = function (date) {
             return this.clone(date).isValid();
         };
         /**
          * @return {?}
          */
-        MomentDateAdapter.prototype.invalid = /**
-         * @return {?}
-         */
-        function () {
+        MomentDateAdapter.prototype.invalid = function () {
             return moment.invalid();
         };
         /**
@@ -973,12 +946,7 @@
          * @param {?} template
          * @return {?}
          */
-        MomentDateAdapter.prototype.relativeDate = /**
-         * @param {?} date
-         * @param {?} template
-         * @return {?}
-         */
-        function (date, template) {
+        MomentDateAdapter.prototype.relativeDate = function (date, template) {
             if (!this.isDateInstance(date)) {
                 throw new Error(this.invalidDateErrorText);
             }
@@ -993,7 +961,7 @@
             /** @type {?} */
             var isYesterday = now.add(-1, 'days').isSame(date, 'day');
             /** @type {?} */
-            var templateVariables = __assign(__assign({}, this.formatterConfig.variables), template.variables);
+            var templateVariables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
             /** @type {?} */
             var variables = this.compileVariables(date, templateVariables);
             /** @type {?} */
@@ -1021,22 +989,14 @@
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.relativeShortDate = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.relativeShortDate = function (date) {
             return this.relativeDate(date, this.formatterConfig.relativeTemplates.short);
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.relativeLongDate = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.relativeLongDate = function (date) {
             return this.relativeDate(date, this.formatterConfig.relativeTemplates.long);
         };
         /**
@@ -1045,19 +1005,13 @@
          * @param {?=} datetime
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteDate = /**
-         * @param {?} date
-         * @param {?} params
-         * @param {?=} datetime
-         * @return {?}
-         */
-        function (date, params, datetime) {
+        MomentDateAdapter.prototype.absoluteDate = function (date, params, datetime) {
             if (datetime === void 0) { datetime = false; }
             if (!this.isDateInstance(date)) {
                 throw new Error(this.invalidDateErrorText);
             }
             /** @type {?} */
-            var variables = __assign(__assign({}, this.formatterConfig.variables), params.variables);
+            var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), params.variables);
             /** @type {?} */
             var template = datetime ? params.DATETIME : params.DATE;
             return this.messageformat.compile(template)(this.compileVariables(date, variables));
@@ -1066,44 +1020,28 @@
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteShortDate = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.absoluteShortDate = function (date) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short);
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteShortDateTime = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.absoluteShortDateTime = function (date) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true);
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteLongDate = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.absoluteLongDate = function (date) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long);
         };
         /**
          * @param {?} date
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteLongDateTime = /**
-         * @param {?} date
-         * @return {?}
-         */
-        function (date) {
+        MomentDateAdapter.prototype.absoluteLongDateTime = function (date) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true);
         };
         /**
@@ -1112,29 +1050,23 @@
          * @param {?} template
          * @return {?}
          */
-        MomentDateAdapter.prototype.openedRangeDate = /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
-        function (startDate, endDate, template) {
+        MomentDateAdapter.prototype.openedRangeDate = function (startDate, endDate, template) {
             if (!moment.isMoment(startDate) && !moment.isMoment(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
             /** @type {?} */
-            var variables = __assign(__assign({}, this.formatterConfig.variables), template.variables);
+            var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
             /** @type {?} */
             var params = {};
             if (startDate) {
                 /** @type {?} */
                 var startDateVariables = this.compileVariables(startDate, variables);
-                params = __assign(__assign({}, variables), { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), RANGE_TYPE: 'onlyStart' });
+                params = Object.assign(Object.assign({}, variables), { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), RANGE_TYPE: 'onlyStart' });
             }
             else if (endDate) {
                 /** @type {?} */
                 var endDateVariables = this.compileVariables(endDate, variables);
-                params = __assign(__assign({}, variables), { END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), RANGE_TYPE: 'onlyEnd' });
+                params = Object.assign(Object.assign({}, variables), { END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), RANGE_TYPE: 'onlyEnd' });
             }
             return this.messageformat.compile(template.DATE)(params);
         };
@@ -1144,29 +1076,23 @@
          * @param {?} template
          * @return {?}
          */
-        MomentDateAdapter.prototype.openedRangeDateTime = /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
-        function (startDate, endDate, template) {
+        MomentDateAdapter.prototype.openedRangeDateTime = function (startDate, endDate, template) {
             if (!moment.isMoment(startDate) && !moment.isMoment(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
             /** @type {?} */
-            var variables = __assign(__assign({}, this.formatterConfig.variables), template.variables);
+            var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
             /** @type {?} */
             var params = {};
             if (startDate) {
                 /** @type {?} */
                 var startDateVariables = this.compileVariables(startDate, variables);
-                params = __assign(__assign({}, variables), { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), RANGE_TYPE: 'onlyStart' });
+                params = Object.assign(Object.assign({}, variables), { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), RANGE_TYPE: 'onlyStart' });
             }
             else if (endDate) {
                 /** @type {?} */
                 var endDateVariables = this.compileVariables(endDate, variables);
-                params = __assign(__assign({}, variables), { END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), RANGE_TYPE: 'onlyEnd' });
+                params = Object.assign(Object.assign({}, variables), { END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), RANGE_TYPE: 'onlyEnd' });
             }
             return this.messageformat.compile(template.DATETIME)(params);
         };
@@ -1176,18 +1102,12 @@
          * @param {?} template
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeDate = /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
-        function (startDate, endDate, template) {
+        MomentDateAdapter.prototype.rangeDate = function (startDate, endDate, template) {
             if (!this.isDateInstance(startDate) || !this.isDateInstance(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
             /** @type {?} */
-            var variables = __assign(__assign({}, this.formatterConfig.variables), template.variables);
+            var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
             /** @type {?} */
             var sameMonth = this.isSame('month', startDate, endDate);
             /** @type {?} */
@@ -1201,7 +1121,7 @@
             startDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             endDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             /** @type {?} */
-            var params = __assign(__assign({}, variables), { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), SAME_MONTH: sameMonth });
+            var params = Object.assign(Object.assign({}, variables), { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), SAME_MONTH: sameMonth });
             return this.messageformat.compile(template.DATE)(params);
         };
         /**
@@ -1210,18 +1130,12 @@
          * @param {?} template
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeDateTime = /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
-        function (startDate, endDate, template) {
+        MomentDateAdapter.prototype.rangeDateTime = function (startDate, endDate, template) {
             if (!this.isDateInstance(startDate) || !this.isDateInstance(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
             /** @type {?} */
-            var variables = __assign(__assign({}, this.formatterConfig.variables), template.variables);
+            var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
             /** @type {?} */
             var sameMonth = this.isSame('month', startDate, endDate);
             /** @type {?} */
@@ -1240,7 +1154,7 @@
             startDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             endDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             /** @type {?} */
-            var params = __assign(__assign({}, variables), { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), SAME_MONTH: sameMonth, SAME_DAY: sameDay });
+            var params = Object.assign(Object.assign({}, variables), { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), SAME_MONTH: sameMonth, SAME_DAY: sameDay });
             return this.messageformat.compile(template.DATETIME)(params);
         };
         /**
@@ -1248,12 +1162,7 @@
          * @param {?=} endDate
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeShortDate = /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
-        function (startDate, endDate) {
+        MomentDateAdapter.prototype.rangeShortDate = function (startDate, endDate) {
             /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
@@ -1266,12 +1175,7 @@
          * @param {?=} endDate
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeShortDateTime = /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
-        function (startDate, endDate) {
+        MomentDateAdapter.prototype.rangeShortDateTime = function (startDate, endDate) {
             /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
@@ -1284,12 +1188,7 @@
          * @param {?=} endDate
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeLongDate = /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
-        function (startDate, endDate) {
+        MomentDateAdapter.prototype.rangeLongDate = function (startDate, endDate) {
             /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
@@ -1302,12 +1201,7 @@
          * @param {?=} endDate
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeLongDateTime = /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
-        function (startDate, endDate) {
+        MomentDateAdapter.prototype.rangeLongDateTime = function (startDate, endDate) {
             /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
@@ -1320,28 +1214,16 @@
          * @param {?} endDate
          * @return {?}
          */
-        MomentDateAdapter.prototype.rangeMiddleDateTime = /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @return {?}
-         */
-        function (startDate, endDate) {
+        MomentDateAdapter.prototype.rangeMiddleDateTime = function (startDate, endDate) {
             return this.rangeDateTime(startDate, endDate, this.formatterConfig.rangeTemplates.closedRange.middle);
         };
-        /** Creates a Moment instance while respecting the current UTC settings. */
         /**
          * Creates a Moment instance while respecting the current UTC settings.
          * @private
          * @param {...?} args
          * @return {?}
          */
-        MomentDateAdapter.prototype.createMoment = /**
-         * Creates a Moment instance while respecting the current UTC settings.
-         * @private
-         * @param {...?} args
-         * @return {?}
-         */
-        function () {
+        MomentDateAdapter.prototype.createMoment = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
@@ -1354,13 +1236,7 @@
          * @param {?} variables
          * @return {?}
          */
-        MomentDateAdapter.prototype.compileVariables = /**
-         * @private
-         * @param {?} date
-         * @param {?} variables
-         * @return {?}
-         */
-        function (date, variables) {
+        MomentDateAdapter.prototype.compileVariables = function (date, variables) {
             /** @type {?} */
             var compiledVariables = {};
             // tslint:disable-next-line:no-for-in
@@ -1380,12 +1256,7 @@
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.isCurrentYear = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.isCurrentYear = function (value) {
             return this.momentWithLocale.isSame(value, 'year') ? 'yes' : 'no';
         };
         /**
@@ -1395,14 +1266,7 @@
          * @param {?} endDate
          * @return {?}
          */
-        MomentDateAdapter.prototype.isSame = /**
-         * @private
-         * @param {?} unit
-         * @param {?} startDate
-         * @param {?} endDate
-         * @return {?}
-         */
-        function (unit, startDate, endDate) {
+        MomentDateAdapter.prototype.isSame = function (unit, startDate, endDate) {
             return startDate.isSame(endDate, unit) ? 'yes' : 'no';
         };
         /**
@@ -1410,25 +1274,15 @@
          * @param {?} locale
          * @return {?}
          */
-        MomentDateAdapter.prototype.configureTranslator = /**
-         * @private
-         * @param {?} locale
-         * @return {?}
-         */
-        function (locale) {
-            this.messageformat = new MessageFormat(locale);
+        MomentDateAdapter.prototype.configureTranslator = function (locale) {
+            this.messageformat = new MessageFormat__namespace(locale);
         };
         /**
          * @private
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.isNumeric = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.isNumeric = function (value) {
             return !isNaN(parseFloat(value)) && isFinite(value);
         };
         /**
@@ -1436,12 +1290,7 @@
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.findFormat = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.findFormat = function (value) {
             if (!value) {
                 return null;
             }
@@ -1479,12 +1328,7 @@
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.parseWithSpace = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.parseWithSpace = function (value) {
             switch (this.locale) {
                 case 'ru':
                     return this.createMoment(value, 'DD MMMM YYYY', this.locale);
@@ -1503,12 +1347,7 @@
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.parseWithSlash = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.parseWithSlash = function (value) {
             switch (this.locale) {
                 case 'ru':
                     return this.createMoment(value, 'DD/MM/YYYY', this.locale);
@@ -1557,12 +1396,7 @@
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.parseWithDash = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.parseWithDash = function (value) {
             // leading year vs finishing year
             /** @type {?} */
             var parts = value.split('-');
@@ -1580,25 +1414,20 @@
          * @param {?} value
          * @return {?}
          */
-        MomentDateAdapter.prototype.parseWithDot = /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
-        function (value) {
+        MomentDateAdapter.prototype.parseWithDot = function (value) {
             // covers two cases YYYY and YY (for current year)
             return this.createMoment(value, 'DD.MM.YYYY', this.locale);
         };
-        MomentDateAdapter.decorators = [
-            { type: core.Injectable }
-        ];
-        /** @nocollapse */
-        MomentDateAdapter.ctorParameters = function () { return [
-            { type: String, decorators: [{ type: core.Optional }, { type: core.Inject, args: [datetime.MC_DATE_LOCALE,] }] },
-            { type: undefined, decorators: [{ type: core.Optional }, { type: core.Inject, args: [MC_MOMENT_DATE_ADAPTER_OPTIONS,] }] }
-        ]; };
         return MomentDateAdapter;
     }(datetime.DateAdapter));
+    MomentDateAdapter.decorators = [
+        { type: core.Injectable }
+    ];
+    /** @nocollapse */
+    MomentDateAdapter.ctorParameters = function () { return [
+        { type: String, decorators: [{ type: core.Optional }, { type: core.Inject, args: [datetime.MC_DATE_LOCALE,] }] },
+        { type: undefined, decorators: [{ type: core.Optional }, { type: core.Inject, args: [MC_MOMENT_DATE_ADAPTER_OPTIONS,] }] }
+    ]; };
     if (false) {
         /**
          * @type {?}
@@ -1630,7 +1459,7 @@
     /**
      * @fileoverview added by tsickle
      * Generated from: moment-date-formats.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     /** @type {?} */
     var MC_MOMENT_DATE_FORMATS = {
@@ -1648,38 +1477,45 @@
     /**
      * @fileoverview added by tsickle
      * Generated from: index.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
      */
     var MomentDateModule = /** @class */ (function () {
         function MomentDateModule() {
         }
-        MomentDateModule.decorators = [
-            { type: core.NgModule, args: [{
-                        providers: [
-                            {
-                                provide: datetime.DateAdapter,
-                                useClass: MomentDateAdapter,
-                                deps: [datetime.MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
-                            }
-                        ]
-                    },] }
-        ];
         return MomentDateModule;
     }());
+    MomentDateModule.decorators = [
+        { type: core.NgModule, args: [{
+                    providers: [
+                        {
+                            provide: datetime.DateAdapter,
+                            useClass: MomentDateAdapter,
+                            deps: [datetime.MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
+                        }
+                    ]
+                },] }
+    ];
     var ɵ0 = MC_MOMENT_DATE_FORMATS;
     var McMomentDateModule = /** @class */ (function () {
         function McMomentDateModule() {
         }
-        McMomentDateModule.decorators = [
-            { type: core.NgModule, args: [{
-                        imports: [MomentDateModule],
-                        providers: [{
-                                provide: datetime.MC_DATE_FORMATS, useValue: ɵ0
-                            }]
-                    },] }
-        ];
         return McMomentDateModule;
     }());
+    McMomentDateModule.decorators = [
+        { type: core.NgModule, args: [{
+                    imports: [MomentDateModule],
+                    providers: [{
+                            provide: datetime.MC_DATE_FORMATS,
+                            useValue: ɵ0
+                        }]
+                },] }
+    ];
+
+    /**
+     * @fileoverview added by tsickle
+     * Generated from: ptsecurity-mosaic-moment-adapter-adapter.ts
+     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     */
 
     exports.MC_MOMENT_DATE_ADAPTER_OPTIONS = MC_MOMENT_DATE_ADAPTER_OPTIONS;
     exports.MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY = MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY;
