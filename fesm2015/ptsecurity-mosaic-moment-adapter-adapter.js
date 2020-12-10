@@ -710,6 +710,26 @@ class MomentDateAdapter extends DateAdapter {
         };
     }
     /**
+     * @return {?}
+     */
+    getLocaleData() {
+        return this.localeData;
+    }
+    /**
+     * @param {?} localeData
+     * @return {?}
+     */
+    setLocaleData(localeData) {
+        this.localeData = localeData;
+    }
+    /**
+     * @param {?} localeData
+     * @return {?}
+     */
+    updateLocaleData(localeData) {
+        this.localeData = Object.assign(Object.assign({}, this.localeData), localeData);
+    }
+    /**
      * @param {?} date
      * @return {?}
      */
@@ -1190,8 +1210,7 @@ class MomentDateAdapter extends DateAdapter {
         endDateVariables.SAME_MONTH = sameMonth;
         endDateVariables.SAME_DAY = sameDay;
         /** @type {?} */
-        const bothCurrentYear = startDateVariables.CURRENT_YEAR === 'yes' &&
-            endDateVariables.CURRENT_YEAR === 'yes';
+        const bothCurrentYear = startDateVariables.CURRENT_YEAR === 'yes' && endDateVariables.CURRENT_YEAR === 'yes';
         startDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
         endDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
         /** @type {?} */
@@ -1417,8 +1436,8 @@ class MomentDateAdapter extends DateAdapter {
                 }
                 /** @type {?} */
                 const canDetermineWhereMonth = canFirstBeMonth && canSecondByMonth;
+                // use US format by default
                 if (canDetermineWhereMonth) {
-                    // use US format by default
                     return this.createMoment(value, 'MM/DD/YYYY', this.locale);
                 }
                 return canFirstBeMonth && !canSecondByMonth

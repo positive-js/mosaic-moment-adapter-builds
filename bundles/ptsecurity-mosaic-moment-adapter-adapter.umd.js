@@ -668,6 +668,26 @@
             };
         };
         /**
+         * @return {?}
+         */
+        MomentDateAdapter.prototype.getLocaleData = function () {
+            return this.localeData;
+        };
+        /**
+         * @param {?} localeData
+         * @return {?}
+         */
+        MomentDateAdapter.prototype.setLocaleData = function (localeData) {
+            this.localeData = localeData;
+        };
+        /**
+         * @param {?} localeData
+         * @return {?}
+         */
+        MomentDateAdapter.prototype.updateLocaleData = function (localeData) {
+            this.localeData = Object.assign(Object.assign({}, this.localeData), localeData);
+        };
+        /**
          * @param {?} date
          * @return {?}
          */
@@ -1149,8 +1169,7 @@
             endDateVariables.SAME_MONTH = sameMonth;
             endDateVariables.SAME_DAY = sameDay;
             /** @type {?} */
-            var bothCurrentYear = startDateVariables.CURRENT_YEAR === 'yes' &&
-                endDateVariables.CURRENT_YEAR === 'yes';
+            var bothCurrentYear = startDateVariables.CURRENT_YEAR === 'yes' && endDateVariables.CURRENT_YEAR === 'yes';
             startDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             endDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             /** @type {?} */
@@ -1380,8 +1399,8 @@
                     }
                     /** @type {?} */
                     var canDetermineWhereMonth = canFirstBeMonth && canSecondByMonth;
+                    // use US format by default
                     if (canDetermineWhereMonth) {
-                        // use US format by default
                         return this.createMoment(value, 'MM/DD/YYYY', this.locale);
                     }
                     return canFirstBeMonth && !canSecondByMonth

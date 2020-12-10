@@ -19,7 +19,7 @@ export declare const MC_MOMENT_DATE_ADAPTER_OPTIONS: InjectionToken<IMcMomentDat
 /** @docs-private */
 export declare function MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY(): IMcMomentDateAdapterOptions;
 export declare class MomentDateAdapter extends DateAdapter<Moment> {
-    private options?;
+    private readonly options?;
     private messageformat;
     private readonly invalidDateErrorText;
     private formatterConfig;
@@ -27,6 +27,17 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     private localeData;
     constructor(dateLocale: string, options?: IMcMomentDateAdapterOptions | undefined);
     setLocale(locale: string): void;
+    getLocaleData(): {
+        firstDayOfWeek: number;
+        longMonths: string[];
+        shortMonths: string[];
+        dates: string[];
+        longDaysOfWeek: string[];
+        shortDaysOfWeek: string[];
+        narrowDaysOfWeek: string[];
+    };
+    setLocaleData(localeData: any): void;
+    updateLocaleData(localeData: any): void;
     getYear(date: Moment): number;
     getMonth(date: Moment): number;
     getDate(date: Moment): number;
