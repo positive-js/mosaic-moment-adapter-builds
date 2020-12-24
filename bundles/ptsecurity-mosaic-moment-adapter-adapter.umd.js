@@ -340,6 +340,8 @@
     var enUS = {
         variables: {
             SECONDS: 's',
+            MILLISECONDS: '.SSS',
+            MICROSECONDS: '.SSSSSS',
             MINUTES: 'm',
             TIME: 'HH:mm',
             DAY: 'D',
@@ -386,11 +388,11 @@
         absoluteTemplates: {
             short: {
                 DATE: '{CURRENT_YEAR, select, yes{{SHORT_DATE}} other{{SHORT_DATE}, {YEAR}}}',
-                DATETIME: '{CURRENT_YEAR, select, yes{{SHORT_DATE}, {TIME}} other{{SHORT_DATE}, {YEAR}, {TIME}}}'
+                DATETIME: "{\n                CURRENT_YEAR,\n                select,\n                    yes{{SHORT_DATE}, {TIME}}\n                    other{{SHORT_DATE}, {YEAR}, {TIME}}\n            }{\n                SHOW_MILLISECONDS,\n                select,\n                    yes{{MILLISECONDS}}\n                    other{}\n            }{\n                SHOW_MICROSECONDS,\n                    select,\n                        yes{{MICROSECONDS}}\n                        other{}\n            }"
             },
             long: {
                 DATE: '{CURRENT_YEAR, select, yes{{DATE}} other{{DATE}, {YEAR}}}',
-                DATETIME: '{CURRENT_YEAR, select, yes{{DATE}, {TIME}} other{{DATE}, {YEAR}, {TIME}}}'
+                DATETIME: "{\n                CURRENT_YEAR,\n                select,\n                    yes{{DATE}, {TIME}}\n                    other{{DATE}, {YEAR}, {TIME}}\n            }{\n                SHOW_MILLISECONDS,\n                select,\n                    yes{{MILLISECONDS}}\n                    other{}\n            }{\n                SHOW_MICROSECONDS,\n                select,\n                    yes{{MICROSECONDS}}\n                    other{}\n            }"
             }
         },
         rangeTemplates: {
@@ -450,6 +452,8 @@
     var ruRU = {
         variables: {
             SECONDS: 's',
+            MILLISECONDS: ',SSS',
+            MICROSECONDS: ',SSSSSS',
             MINUTES: 'm',
             TIME: 'HH:mm',
             DAY: 'D',
@@ -496,11 +500,11 @@
         absoluteTemplates: {
             short: {
                 DATE: '{CURRENT_YEAR, select, yes{{SHORT_DATE}} other{{SHORT_DATE} {YEAR}}}',
-                DATETIME: '{CURRENT_YEAR, select, yes{{SHORT_DATE}, {TIME}} other{{SHORT_DATE} {YEAR}, {TIME}}}'
+                DATETIME: "{\n                CURRENT_YEAR,\n                select,\n                    yes{{SHORT_DATE}, {TIME}}\n                    other{{SHORT_DATE} {YEAR}, {TIME}}\n            }{\n                SHOW_MILLISECONDS,\n                select,\n                    yes{{MILLISECONDS}}\n                    other{}\n            }{\n                SHOW_MICROSECONDS,\n                select,\n                    yes{{MICROSECONDS}}\n                    other{}\n            }"
             },
             long: {
                 DATE: '{CURRENT_YEAR, select, yes{{DATE}} other{{DATE} {YEAR}}}',
-                DATETIME: '{CURRENT_YEAR, select, yes{{DATE}, {TIME}} other{{DATE} {YEAR}, {TIME}}}'
+                DATETIME: "{\n                CURRENT_YEAR,\n                select,\n                    yes{{DATE}, {TIME}}\n                    other{{DATE} {YEAR}, {TIME}}\n            }{\n                SHOW_MILLISECONDS,\n                select,\n                    yes{{MILLISECONDS}}\n                    other{}\n            }{\n                SHOW_MICROSECONDS,\n                select,\n                    yes{{MICROSECONDS}}\n                    other{}\n            }"
             }
         },
         rangeTemplates: {
@@ -1023,18 +1027,24 @@
          * @param {?} date
          * @param {?} params
          * @param {?=} datetime
+         * @param {?=} milliseconds
+         * @param {?=} microseconds
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteDate = function (date, params, datetime) {
+        MomentDateAdapter.prototype.absoluteDate = function (date, params, datetime, milliseconds, microseconds) {
             if (datetime === void 0) { datetime = false; }
+            if (milliseconds === void 0) { milliseconds = false; }
+            if (microseconds === void 0) { microseconds = false; }
             if (!this.isDateInstance(date)) {
                 throw new Error(this.invalidDateErrorText);
             }
             /** @type {?} */
-            var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), params.variables);
+            var variables = this.compileVariables(date, Object.assign(Object.assign({}, this.formatterConfig.variables), params.variables));
+            variables.SHOW_MILLISECONDS = milliseconds ? 'yes' : 'no';
+            variables.SHOW_MICROSECONDS = microseconds ? 'yes' : 'no';
             /** @type {?} */
             var template = datetime ? params.DATETIME : params.DATE;
-            return this.messageformat.compile(template)(this.compileVariables(date, variables));
+            return this.messageformat.compile(template)(variables);
         };
         /**
          * @param {?} date
@@ -1045,10 +1055,11 @@
         };
         /**
          * @param {?} date
+         * @param {?=} options
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteShortDateTime = function (date) {
-            return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true);
+        MomentDateAdapter.prototype.absoluteShortDateTime = function (date, options) {
+            return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true, options === null || options === void 0 ? void 0 : options.milliseconds, options === null || options === void 0 ? void 0 : options.microseconds);
         };
         /**
          * @param {?} date
@@ -1059,10 +1070,11 @@
         };
         /**
          * @param {?} date
+         * @param {?=} options
          * @return {?}
          */
-        MomentDateAdapter.prototype.absoluteLongDateTime = function (date) {
-            return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true);
+        MomentDateAdapter.prototype.absoluteLongDateTime = function (date, options) {
+            return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true, options === null || options === void 0 ? void 0 : options.milliseconds, options === null || options === void 0 ? void 0 : options.microseconds);
         };
         /**
          * @param {?} startDate

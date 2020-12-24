@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { DateAdapter, IFormatterRangeTemplate, IFormatterRelativeTemplate, IFormatterAbsoluteTemplate } from '@ptsecurity/cdk/datetime';
+import { DateAdapter, IFormatterRangeTemplate, IFormatterRelativeTemplate, IFormatterAbsoluteTemplate, IAbsoluteDateTimeOptions } from '@ptsecurity/cdk/datetime';
 import { Moment } from 'moment';
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface IMcMomentDateAdapterOptions {
@@ -71,11 +71,11 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     relativeDate(date: Moment, template: IFormatterRelativeTemplate): string;
     relativeShortDate(date: Moment): string;
     relativeLongDate(date: Moment): string;
-    absoluteDate(date: Moment, params: IFormatterAbsoluteTemplate, datetime?: boolean): string;
+    absoluteDate(date: Moment, params: IFormatterAbsoluteTemplate, datetime?: boolean, milliseconds?: boolean, microseconds?: boolean): string;
     absoluteShortDate(date: Moment): string;
-    absoluteShortDateTime(date: Moment): string;
+    absoluteShortDateTime(date: Moment, options?: IAbsoluteDateTimeOptions): string;
     absoluteLongDate(date: Moment): string;
-    absoluteLongDateTime(date: Moment): string;
+    absoluteLongDateTime(date: Moment, options?: IAbsoluteDateTimeOptions): string;
     openedRangeDate(startDate: Moment | null, endDate: Moment | null, template: IFormatterRangeTemplate): string;
     openedRangeDateTime(startDate: Moment | null, endDate: Moment | null, template: IFormatterRangeTemplate): string;
     rangeDate(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;

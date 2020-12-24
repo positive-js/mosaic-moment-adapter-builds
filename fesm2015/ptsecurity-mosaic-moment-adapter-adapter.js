@@ -13,6 +13,8 @@ import _rollupMoment__default from 'moment';
 const enUS = {
     variables: {
         SECONDS: 's',
+        MILLISECONDS: '.SSS',
+        MICROSECONDS: '.SSSSSS',
         MINUTES: 'm',
         TIME: 'HH:mm',
         DAY: 'D',
@@ -59,11 +61,41 @@ const enUS = {
     absoluteTemplates: {
         short: {
             DATE: '{CURRENT_YEAR, select, yes{{SHORT_DATE}} other{{SHORT_DATE}, {YEAR}}}',
-            DATETIME: '{CURRENT_YEAR, select, yes{{SHORT_DATE}, {TIME}} other{{SHORT_DATE}, {YEAR}, {TIME}}}'
+            DATETIME: `{
+                CURRENT_YEAR,
+                select,
+                    yes{{SHORT_DATE}, {TIME}}
+                    other{{SHORT_DATE}, {YEAR}, {TIME}}
+            }{
+                SHOW_MILLISECONDS,
+                select,
+                    yes{{MILLISECONDS}}
+                    other{}
+            }{
+                SHOW_MICROSECONDS,
+                    select,
+                        yes{{MICROSECONDS}}
+                        other{}
+            }`
         },
         long: {
             DATE: '{CURRENT_YEAR, select, yes{{DATE}} other{{DATE}, {YEAR}}}',
-            DATETIME: '{CURRENT_YEAR, select, yes{{DATE}, {TIME}} other{{DATE}, {YEAR}, {TIME}}}'
+            DATETIME: `{
+                CURRENT_YEAR,
+                select,
+                    yes{{DATE}, {TIME}}
+                    other{{DATE}, {YEAR}, {TIME}}
+            }{
+                SHOW_MILLISECONDS,
+                select,
+                    yes{{MILLISECONDS}}
+                    other{}
+            }{
+                SHOW_MICROSECONDS,
+                select,
+                    yes{{MICROSECONDS}}
+                    other{}
+            }`
         }
     },
     rangeTemplates: {
@@ -308,6 +340,8 @@ const enUS = {
 const ruRU = {
     variables: {
         SECONDS: 's',
+        MILLISECONDS: ',SSS',
+        MICROSECONDS: ',SSSSSS',
         MINUTES: 'm',
         TIME: 'HH:mm',
         DAY: 'D',
@@ -354,11 +388,41 @@ const ruRU = {
     absoluteTemplates: {
         short: {
             DATE: '{CURRENT_YEAR, select, yes{{SHORT_DATE}} other{{SHORT_DATE} {YEAR}}}',
-            DATETIME: '{CURRENT_YEAR, select, yes{{SHORT_DATE}, {TIME}} other{{SHORT_DATE} {YEAR}, {TIME}}}'
+            DATETIME: `{
+                CURRENT_YEAR,
+                select,
+                    yes{{SHORT_DATE}, {TIME}}
+                    other{{SHORT_DATE} {YEAR}, {TIME}}
+            }{
+                SHOW_MILLISECONDS,
+                select,
+                    yes{{MILLISECONDS}}
+                    other{}
+            }{
+                SHOW_MICROSECONDS,
+                select,
+                    yes{{MICROSECONDS}}
+                    other{}
+            }`
         },
         long: {
             DATE: '{CURRENT_YEAR, select, yes{{DATE}} other{{DATE} {YEAR}}}',
-            DATETIME: '{CURRENT_YEAR, select, yes{{DATE}, {TIME}} other{{DATE} {YEAR}, {TIME}}}'
+            DATETIME: `{
+                CURRENT_YEAR,
+                select,
+                    yes{{DATE}, {TIME}}
+                    other{{DATE} {YEAR}, {TIME}}
+            }{
+                SHOW_MILLISECONDS,
+                select,
+                    yes{{MILLISECONDS}}
+                    other{}
+            }{
+                SHOW_MICROSECONDS,
+                select,
+                    yes{{MICROSECONDS}}
+                    other{}
+            }`
         }
     },
     rangeTemplates: {
@@ -1065,17 +1129,21 @@ class MomentDateAdapter extends DateAdapter {
      * @param {?} date
      * @param {?} params
      * @param {?=} datetime
+     * @param {?=} milliseconds
+     * @param {?=} microseconds
      * @return {?}
      */
-    absoluteDate(date, params, datetime = false) {
+    absoluteDate(date, params, datetime = false, milliseconds = false, microseconds = false) {
         if (!this.isDateInstance(date)) {
             throw new Error(this.invalidDateErrorText);
         }
         /** @type {?} */
-        const variables = Object.assign(Object.assign({}, this.formatterConfig.variables), params.variables);
+        const variables = this.compileVariables(date, Object.assign(Object.assign({}, this.formatterConfig.variables), params.variables));
+        variables.SHOW_MILLISECONDS = milliseconds ? 'yes' : 'no';
+        variables.SHOW_MICROSECONDS = microseconds ? 'yes' : 'no';
         /** @type {?} */
         const template = datetime ? params.DATETIME : params.DATE;
-        return this.messageformat.compile(template)(this.compileVariables(date, variables));
+        return this.messageformat.compile(template)(variables);
     }
     /**
      * @param {?} date
@@ -1086,10 +1154,11 @@ class MomentDateAdapter extends DateAdapter {
     }
     /**
      * @param {?} date
+     * @param {?=} options
      * @return {?}
      */
-    absoluteShortDateTime(date) {
-        return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true);
+    absoluteShortDateTime(date, options) {
+        return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true, options === null || options === void 0 ? void 0 : options.milliseconds, options === null || options === void 0 ? void 0 : options.microseconds);
     }
     /**
      * @param {?} date
@@ -1100,10 +1169,11 @@ class MomentDateAdapter extends DateAdapter {
     }
     /**
      * @param {?} date
+     * @param {?=} options
      * @return {?}
      */
-    absoluteLongDateTime(date) {
-        return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true);
+    absoluteLongDateTime(date, options) {
+        return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true, options === null || options === void 0 ? void 0 : options.milliseconds, options === null || options === void 0 ? void 0 : options.microseconds);
     }
     /**
      * @param {?} startDate
