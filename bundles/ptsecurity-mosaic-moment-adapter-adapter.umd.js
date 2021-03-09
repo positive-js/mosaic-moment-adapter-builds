@@ -331,12 +331,6 @@
         return value;
     }
 
-    /**
-     * @fileoverview added by tsickle
-     * Generated from: locales/en-US.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /** @type {?} */
     var enUS = {
         variables: {
             SECONDS: 's',
@@ -443,12 +437,6 @@
         }
     };
 
-    /**
-     * @fileoverview added by tsickle
-     * Generated from: locales/ru-RU.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /** @type {?} */
     var ruRU = {
         variables: {
             SECONDS: 's',
@@ -555,39 +543,13 @@
         }
     };
 
-    /** @type {?} */
     var moment = _rollupMoment__default['default'] || _rollupMoment__namespace;
-    /**
-     * Configurable options for {\@see MomentDateAdapter}.
-     * @record
-     */
-    function IMcMomentDateAdapterOptions() { }
-    if (false) {
-        /**
-         * Turns the use of utc dates on or off.
-         * {\@default false}
-         * @type {?}
-         */
-        IMcMomentDateAdapterOptions.prototype.useUtc;
-        /**
-         * whether should parse method try guess date format
-         * {\@default false}
-         * @type {?}
-         */
-        IMcMomentDateAdapterOptions.prototype.findDateFormat;
-    }
-    /**
-     * InjectionToken for moment date adapter to configure options.
-     * @type {?}
-     */
+    /** InjectionToken for moment date adapter to configure options. */
     var MC_MOMENT_DATE_ADAPTER_OPTIONS = new core.InjectionToken('MC_MOMENT_DATE_ADAPTER_OPTIONS', {
         providedIn: 'root',
         factory: MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY
     });
-    /**
-     * \@docs-private
-     * @return {?}
-     */
+    /** @docs-private */
     // tslint:disable:naming-convention
     function MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY() {
         return {
@@ -595,15 +557,8 @@
             findDateFormat: false
         };
     }
-    /**
-     * Creates an array and fills it with values.
-     * @template T
-     * @param {?} length
-     * @param {?} valueFunction
-     * @return {?}
-     */
+    /** Creates an array and fills it with values. */
     function range(length, valueFunction) {
-        /** @type {?} */
         var valuesArray = Array(length);
         for (var i = 0; i < length; i++) {
             valuesArray[i] = valueFunction(i);
@@ -612,10 +567,6 @@
     }
     var MomentDateAdapter = /** @class */ (function (_super) {
         __extends(MomentDateAdapter, _super);
-        /**
-         * @param {?} dateLocale
-         * @param {?=} options
-         */
         function MomentDateAdapter(dateLocale, options) {
             var _this = _super.call(this) || this;
             _this.options = options;
@@ -625,27 +576,17 @@
             return _this;
         }
         Object.defineProperty(MomentDateAdapter.prototype, "momentWithLocale", {
-            /**
-             * @private
-             * @return {?}
-             */
             get: function () {
                 return moment().locale(this.locale);
             },
             enumerable: false,
             configurable: true
         });
-        /**
-         * @param {?} locale
-         * @return {?}
-         */
         MomentDateAdapter.prototype.setLocale = function (locale) {
             var _this = this;
             _super.prototype.setLocale.call(this, locale);
-            /** @type {?} */
             var momentLocaleData = moment.localeData(locale);
             // This is our customs translations
-            /** @type {?} */
             var i18nLocals = ['en', 'ru'];
             if (i18nLocals.indexOf(locale) !== -1) {
                 this.formatterConfig = locale === 'en' ? enUS : ruRU;
@@ -662,116 +603,55 @@
                 firstDayOfWeek: momentLocaleData.firstDayOfWeek(),
                 longMonths: momentLocaleData.months(),
                 shortMonths: momentLocaleData.monthsShort(),
-                dates: range(31, ( /**
-                 * @param {?} i
-                 * @return {?}
-                 */function (i) { return _this.createDate(2017, 0, i + 1).format('D'); })),
+                dates: range(31, function (i) { return _this.createDate(2017, 0, i + 1).format('D'); }),
                 longDaysOfWeek: momentLocaleData.weekdays(),
                 shortDaysOfWeek: momentLocaleData.weekdaysShort(),
                 narrowDaysOfWeek: momentLocaleData.weekdaysMin()
             };
         };
-        /**
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getLocaleData = function () {
             return this.localeData;
         };
-        /**
-         * @param {?} localeData
-         * @return {?}
-         */
         MomentDateAdapter.prototype.setLocaleData = function (localeData) {
             this.localeData = localeData;
         };
-        /**
-         * @param {?} localeData
-         * @return {?}
-         */
         MomentDateAdapter.prototype.updateLocaleData = function (localeData) {
             this.localeData = Object.assign(Object.assign({}, this.localeData), localeData);
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getYear = function (date) {
             return this.clone(date).year();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getMonth = function (date) {
             return this.clone(date).month();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getDate = function (date) {
             return this.clone(date).date();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getHours = function (date) {
             return this.clone(date).hours();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getMinutes = function (date) {
             return this.clone(date).minutes();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getSeconds = function (date) {
             return this.clone(date).seconds();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getMilliseconds = function (date) {
             return this.clone(date).milliseconds();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getTime = function (date) {
             return date.valueOf();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getDayOfWeek = function (date) {
             return this.clone(date).day();
         };
-        /**
-         * @param {?} style
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getMonthNames = function (style) {
             // Moment.js doesn't support narrow month names
             return style === 'long' ? this.localeData.longMonths : this.localeData.shortMonths;
         };
-        /**
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getDateNames = function () {
             return this.localeData.dates;
         };
-        /**
-         * @param {?} style
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getDayOfWeekNames = function (style) {
             if (style === 'long') {
                 return this.localeData.longDaysOfWeek;
@@ -781,39 +661,18 @@
             }
             return this.localeData.narrowDaysOfWeek;
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getYearName = function (date) {
             return this.clone(date).format('YYYY');
         };
-        /**
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getFirstDayOfWeek = function () {
             return this.localeData.firstDayOfWeek;
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.getNumDaysInMonth = function (date) {
             return this.clone(date).daysInMonth();
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.clone = function (date) {
             return date.clone().locale(this.locale);
         };
-        /**
-         * @param {?} year
-         * @param {?} month
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.createDate = function (year, month, date) {
             // Moment.js will create an invalid date if any of the components are out of bounds, but we
             // explicitly check each case so we can throw more descriptive errors.
@@ -823,7 +682,6 @@
             if (date < 1) {
                 throw Error("Invalid date \"" + date + "\". Date has to be greater than 0.");
             }
-            /** @type {?} */
             var result = this.createMoment({ year: year, month: month, date: date }).locale(this.locale);
             // If the result isn't valid, the date must have been out of bounds for this month.
             if (!result.isValid()) {
@@ -831,18 +689,7 @@
             }
             return result;
         };
-        /**
-         * @param {?} year
-         * @param {?} month
-         * @param {?} date
-         * @param {?} hours
-         * @param {?} minutes
-         * @param {?} seconds
-         * @param {?} milliseconds
-         * @return {?}
-         */
         MomentDateAdapter.prototype.createDateTime = function (year, month, date, hours, minutes, seconds, milliseconds) {
-            /** @type {?} */
             var newDate = this.createDate(year, month, date);
             newDate.hours(hours);
             newDate.minutes(minutes);
@@ -850,17 +697,9 @@
             newDate.milliseconds(milliseconds);
             return newDate;
         };
-        /**
-         * @return {?}
-         */
         MomentDateAdapter.prototype.today = function () {
             return this.createMoment().locale(this.locale);
         };
-        /**
-         * @param {?} value
-         * @param {?} parseFormat
-         * @return {?}
-         */
         MomentDateAdapter.prototype.parse = function (value, parseFormat) {
             if (value) {
                 if (value && typeof value === 'string') {
@@ -875,11 +714,6 @@
             }
             return null;
         };
-        /**
-         * @param {?} date
-         * @param {?} displayFormat
-         * @return {?}
-         */
         MomentDateAdapter.prototype.format = function (date, displayFormat) {
             // tslint:disable:no-parameter-reassignment
             date = this.clone(date);
@@ -888,44 +722,20 @@
             }
             return date.format(displayFormat);
         };
-        /**
-         * @param {?} date
-         * @param {?} years
-         * @return {?}
-         */
         MomentDateAdapter.prototype.addCalendarYears = function (date, years) {
             return this.clone(date).add({ years: years });
         };
-        /**
-         * @param {?} date
-         * @param {?} months
-         * @return {?}
-         */
         MomentDateAdapter.prototype.addCalendarMonths = function (date, months) {
             return this.clone(date).add({ months: months });
         };
-        /**
-         * @param {?} date
-         * @param {?} days
-         * @return {?}
-         */
         MomentDateAdapter.prototype.addCalendarDays = function (date, days) {
             return this.clone(date).add({ days: days });
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.toIso8601 = function (date) {
             return this.clone(date).format();
         };
-        /**
-         * https://www.ietf.org/rfc/rfc3339.txt
-         * @param {?} value
-         * @return {?}
-         */
+        /** https://www.ietf.org/rfc/rfc3339.txt */
         MomentDateAdapter.prototype.deserialize = function (value) {
-            /** @type {?} */
             var date;
             if (value instanceof Date) {
                 date = this.createMoment(value).locale(this.locale);
@@ -945,50 +755,26 @@
             }
             return _super.prototype.deserialize.call(this, value);
         };
-        /**
-         * @param {?} obj
-         * @return {?}
-         */
         MomentDateAdapter.prototype.isDateInstance = function (obj) {
             return moment.isMoment(obj);
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.isValid = function (date) {
             return this.clone(date).isValid();
         };
-        /**
-         * @return {?}
-         */
         MomentDateAdapter.prototype.invalid = function () {
             return moment.invalid();
         };
-        /**
-         * @param {?} date
-         * @param {?} template
-         * @return {?}
-         */
         MomentDateAdapter.prototype.relativeDate = function (date, template) {
             if (!this.isDateInstance(date)) {
                 throw new Error(this.invalidDateErrorText);
             }
-            /** @type {?} */
             var now = this.momentWithLocale;
-            /** @type {?} */
             var totalSeconds = now.diff(date, 'seconds');
-            /** @type {?} */
             var totalMinutes = now.diff(date, 'minutes');
-            /** @type {?} */
             var isToday = now.isSame(date, 'day');
-            /** @type {?} */
             var isYesterday = now.add(-1, 'days').isSame(date, 'day');
-            /** @type {?} */
             var templateVariables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
-            /** @type {?} */
             var variables = this.compileVariables(date, templateVariables);
-            /** @type {?} */
             var newTemplate;
             if (totalSeconds <= 59) { // seconds ago
                 variables.SECONDS_PASSED = totalSeconds;
@@ -1009,28 +795,12 @@
             }
             return this.messageformat.compile(newTemplate)(variables);
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.relativeShortDate = function (date) {
             return this.relativeDate(date, this.formatterConfig.relativeTemplates.short);
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.relativeLongDate = function (date) {
             return this.relativeDate(date, this.formatterConfig.relativeTemplates.long);
         };
-        /**
-         * @param {?} date
-         * @param {?} params
-         * @param {?=} datetime
-         * @param {?=} milliseconds
-         * @param {?=} microseconds
-         * @return {?}
-         */
         MomentDateAdapter.prototype.absoluteDate = function (date, params, datetime, milliseconds, microseconds) {
             if (datetime === void 0) { datetime = false; }
             if (milliseconds === void 0) { milliseconds = false; }
@@ -1038,222 +808,123 @@
             if (!this.isDateInstance(date)) {
                 throw new Error(this.invalidDateErrorText);
             }
-            /** @type {?} */
             var variables = this.compileVariables(date, Object.assign(Object.assign({}, this.formatterConfig.variables), params.variables));
             variables.SHOW_MILLISECONDS = milliseconds ? 'yes' : 'no';
             variables.SHOW_MICROSECONDS = microseconds ? 'yes' : 'no';
-            /** @type {?} */
             var template = datetime ? params.DATETIME : params.DATE;
             return this.messageformat.compile(template)(variables);
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.absoluteShortDate = function (date) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short);
         };
-        /**
-         * @param {?} date
-         * @param {?=} options
-         * @return {?}
-         */
         MomentDateAdapter.prototype.absoluteShortDateTime = function (date, options) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.short, true, options === null || options === void 0 ? void 0 : options.milliseconds, options === null || options === void 0 ? void 0 : options.microseconds);
         };
-        /**
-         * @param {?} date
-         * @return {?}
-         */
         MomentDateAdapter.prototype.absoluteLongDate = function (date) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long);
         };
-        /**
-         * @param {?} date
-         * @param {?=} options
-         * @return {?}
-         */
         MomentDateAdapter.prototype.absoluteLongDateTime = function (date, options) {
             return this.absoluteDate(date, this.formatterConfig.absoluteTemplates.long, true, options === null || options === void 0 ? void 0 : options.milliseconds, options === null || options === void 0 ? void 0 : options.microseconds);
         };
-        /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
         MomentDateAdapter.prototype.openedRangeDate = function (startDate, endDate, template) {
             if (!moment.isMoment(startDate) && !moment.isMoment(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
-            /** @type {?} */
             var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
-            /** @type {?} */
             var params = {};
             if (startDate) {
-                /** @type {?} */
                 var startDateVariables = this.compileVariables(startDate, variables);
                 params = Object.assign(Object.assign({}, variables), { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), RANGE_TYPE: 'onlyStart' });
             }
             else if (endDate) {
-                /** @type {?} */
                 var endDateVariables = this.compileVariables(endDate, variables);
                 params = Object.assign(Object.assign({}, variables), { END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), RANGE_TYPE: 'onlyEnd' });
             }
             return this.messageformat.compile(template.DATE)(params);
         };
-        /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
         MomentDateAdapter.prototype.openedRangeDateTime = function (startDate, endDate, template) {
             if (!moment.isMoment(startDate) && !moment.isMoment(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
-            /** @type {?} */
             var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
-            /** @type {?} */
             var params = {};
             if (startDate) {
-                /** @type {?} */
                 var startDateVariables = this.compileVariables(startDate, variables);
                 params = Object.assign(Object.assign({}, variables), { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), RANGE_TYPE: 'onlyStart' });
             }
             else if (endDate) {
-                /** @type {?} */
                 var endDateVariables = this.compileVariables(endDate, variables);
                 params = Object.assign(Object.assign({}, variables), { END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), RANGE_TYPE: 'onlyEnd' });
             }
             return this.messageformat.compile(template.DATETIME)(params);
         };
-        /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeDate = function (startDate, endDate, template) {
             if (!this.isDateInstance(startDate) || !this.isDateInstance(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
-            /** @type {?} */
             var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
-            /** @type {?} */
             var sameMonth = this.isSame('month', startDate, endDate);
-            /** @type {?} */
             var startDateVariables = this.compileVariables(startDate, variables);
             startDateVariables.SAME_MONTH = sameMonth;
-            /** @type {?} */
             var endDateVariables = this.compileVariables(endDate, variables);
             endDateVariables.SAME_MONTH = sameMonth;
-            /** @type {?} */
             var bothCurrentYear = startDateVariables.CURRENT_YEAR === 'yes' && endDateVariables.CURRENT_YEAR === 'yes';
             startDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             endDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
-            /** @type {?} */
             var params = Object.assign(Object.assign({}, variables), { START_DATE: this.messageformat.compile(template.START_DATE)(startDateVariables), END_DATE: this.messageformat.compile(template.END_DATE)(endDateVariables), SAME_MONTH: sameMonth });
             return this.messageformat.compile(template.DATE)(params);
         };
-        /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @param {?} template
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeDateTime = function (startDate, endDate, template) {
             if (!this.isDateInstance(startDate) || !this.isDateInstance(endDate)) {
                 throw new Error(this.invalidDateErrorText);
             }
-            /** @type {?} */
             var variables = Object.assign(Object.assign({}, this.formatterConfig.variables), template.variables);
-            /** @type {?} */
             var sameMonth = this.isSame('month', startDate, endDate);
-            /** @type {?} */
             var sameDay = this.isSame('day', startDate, endDate);
-            /** @type {?} */
             var startDateVariables = this.compileVariables(startDate, variables);
             startDateVariables.SAME_MONTH = sameMonth;
             startDateVariables.SAME_DAY = sameDay;
-            /** @type {?} */
             var endDateVariables = this.compileVariables(endDate, variables);
             endDateVariables.SAME_MONTH = sameMonth;
             endDateVariables.SAME_DAY = sameDay;
-            /** @type {?} */
             var bothCurrentYear = startDateVariables.CURRENT_YEAR === 'yes' && endDateVariables.CURRENT_YEAR === 'yes';
             startDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
             endDateVariables.CURRENT_YEAR = bothCurrentYear ? 'yes' : 'no';
-            /** @type {?} */
             var params = Object.assign(Object.assign({}, variables), { START_DATETIME: this.messageformat.compile(template.START_DATETIME)(startDateVariables), END_DATETIME: this.messageformat.compile(template.END_DATETIME)(endDateVariables), SAME_MONTH: sameMonth, SAME_DAY: sameDay });
             return this.messageformat.compile(template.DATETIME)(params);
         };
-        /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeShortDate = function (startDate, endDate) {
-            /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
                 return this.rangeDate(startDate, endDate, rangeTemplates.closedRange.short);
             }
             return this.openedRangeDate(startDate, endDate || null, rangeTemplates.openedRange.short);
         };
-        /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeShortDateTime = function (startDate, endDate) {
-            /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
                 return this.rangeDateTime(startDate, endDate, rangeTemplates.closedRange.short);
             }
             return this.openedRangeDateTime(startDate, endDate || null, rangeTemplates.openedRange.short);
         };
-        /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeLongDate = function (startDate, endDate) {
-            /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
                 return this.rangeDate(startDate, endDate, rangeTemplates.closedRange.long);
             }
             return this.openedRangeDate(startDate, endDate || null, rangeTemplates.openedRange.long);
         };
-        /**
-         * @param {?} startDate
-         * @param {?=} endDate
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeLongDateTime = function (startDate, endDate) {
-            /** @type {?} */
             var rangeTemplates = this.formatterConfig.rangeTemplates;
             if (startDate && endDate) {
                 return this.rangeDateTime(startDate, endDate, rangeTemplates.closedRange.long);
             }
             return this.openedRangeDateTime(startDate, endDate || null, rangeTemplates.openedRange.long);
         };
-        /**
-         * @param {?} startDate
-         * @param {?} endDate
-         * @return {?}
-         */
         MomentDateAdapter.prototype.rangeMiddleDateTime = function (startDate, endDate) {
             return this.rangeDateTime(startDate, endDate, this.formatterConfig.rangeTemplates.closedRange.middle);
         };
-        /**
-         * Creates a Moment instance while respecting the current UTC settings.
-         * @private
-         * @param {...?} args
-         * @return {?}
-         */
+        /** Creates a Moment instance while respecting the current UTC settings. */
         MomentDateAdapter.prototype.createMoment = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
@@ -1261,72 +932,36 @@
             }
             return (this.options && this.options.useUtc) ? moment.utc.apply(moment, __spread(args)) : moment.apply(void 0, __spread(args));
         };
-        /**
-         * @private
-         * @param {?} date
-         * @param {?} variables
-         * @return {?}
-         */
         MomentDateAdapter.prototype.compileVariables = function (date, variables) {
-            /** @type {?} */
             var compiledVariables = {};
             // tslint:disable-next-line:no-for-in
             for (var key in variables) {
                 if (!variables.hasOwnProperty(key)) {
                     continue;
                 }
-                /** @type {?} */
                 var value = variables[key];
                 compiledVariables[key] = date.format(value);
             }
             compiledVariables.CURRENT_YEAR = this.isCurrentYear(date);
             return compiledVariables;
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.isCurrentYear = function (value) {
             return this.momentWithLocale.isSame(value, 'year') ? 'yes' : 'no';
         };
-        /**
-         * @private
-         * @param {?} unit
-         * @param {?} startDate
-         * @param {?} endDate
-         * @return {?}
-         */
         MomentDateAdapter.prototype.isSame = function (unit, startDate, endDate) {
             return startDate.isSame(endDate, unit) ? 'yes' : 'no';
         };
-        /**
-         * @private
-         * @param {?} locale
-         * @return {?}
-         */
         MomentDateAdapter.prototype.configureTranslator = function (locale) {
             this.messageformat = new MessageFormat__namespace(locale);
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.isNumeric = function (value) {
             return !isNaN(parseFloat(value)) && isFinite(value);
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.findFormat = function (value) {
             if (!value) {
                 return null;
             }
             // default test - iso
-            /** @type {?} */
             var isoDate = this.createMoment(value, moment.ISO_8601, this.locale);
             if (isoDate.isValid()) {
                 return isoDate;
@@ -1354,11 +989,6 @@
             }
             return null;
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.parseWithSpace = function (value) {
             switch (this.locale) {
                 case 'ru':
@@ -1373,11 +1003,6 @@
                     throw new Error("Locale " + this.locale + " is not supported");
             }
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.parseWithSlash = function (value) {
             switch (this.locale) {
                 case 'ru':
@@ -1385,31 +1010,23 @@
                 // todo do we use generalized locales? en vs en-US; until not we try to guess
                 case 'en':
                     // US vs UK
-                    /** @type {?} */
                     var parts = value.split('/');
-                    /** @type {?} */
                     var datePartsCount = 3;
                     if (parts.length !== datePartsCount) {
                         return null;
                     }
-                    /** @type {?} */
                     var firstPart = parts[0].trim();
-                    /** @type {?} */
                     var secondPart = parts[1].trim();
                     if (!this.isNumeric(firstPart) || !this.isNumeric(secondPart)) {
                         return null;
                     }
-                    /** @type {?} */
                     var monthsInYears = 12;
-                    /** @type {?} */
                     var canFirstBeMonth = +firstPart <= monthsInYears;
-                    /** @type {?} */
                     var canSecondByMonth = +secondPart <= monthsInYears;
                     // first two parts cannot be month
                     if (!canFirstBeMonth && !canSecondByMonth) {
                         return null;
                     }
-                    /** @type {?} */
                     var canDetermineWhereMonth = canFirstBeMonth && canSecondByMonth;
                     // use US format by default
                     if (canDetermineWhereMonth) {
@@ -1422,29 +1039,17 @@
                     throw new Error("Locale " + this.locale + " is not supported");
             }
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.parseWithDash = function (value) {
             // leading year vs finishing year
-            /** @type {?} */
             var parts = value.split('-');
             if (parts[0].length === 0) {
                 return null;
             }
-            /** @type {?} */
             var maxDayOrMonthCharsCount = 2;
             return parts[0].length <= maxDayOrMonthCharsCount
                 ? this.createMoment(value, 'DD-MM-YYYY', this.locale)
                 : this.createMoment(value, 'YYYY-MM-DD', this.locale);
         };
-        /**
-         * @private
-         * @param {?} value
-         * @return {?}
-         */
         MomentDateAdapter.prototype.parseWithDot = function (value) {
             // covers two cases YYYY and YY (for current year)
             return this.createMoment(value, 'DD.MM.YYYY', this.locale);
@@ -1459,40 +1064,7 @@
         { type: String, decorators: [{ type: core.Optional }, { type: core.Inject, args: [datetime.MC_DATE_LOCALE,] }] },
         { type: undefined, decorators: [{ type: core.Optional }, { type: core.Inject, args: [MC_MOMENT_DATE_ADAPTER_OPTIONS,] }] }
     ]; };
-    if (false) {
-        /**
-         * @type {?}
-         * @private
-         */
-        MomentDateAdapter.prototype.messageformat;
-        /**
-         * @type {?}
-         * @private
-         */
-        MomentDateAdapter.prototype.invalidDateErrorText;
-        /**
-         * @type {?}
-         * @private
-         */
-        MomentDateAdapter.prototype.formatterConfig;
-        /**
-         * @type {?}
-         * @private
-         */
-        MomentDateAdapter.prototype.localeData;
-        /**
-         * @type {?}
-         * @private
-         */
-        MomentDateAdapter.prototype.options;
-    }
 
-    /**
-     * @fileoverview added by tsickle
-     * Generated from: moment-date-formats.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
-    /** @type {?} */
     var MC_MOMENT_DATE_FORMATS = {
         parse: {
             dateInput: 'L'
@@ -1505,11 +1077,6 @@
         }
     };
 
-    /**
-     * @fileoverview added by tsickle
-     * Generated from: index.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
-     */
     var MomentDateModule = /** @class */ (function () {
         function MomentDateModule() {
         }
@@ -1543,9 +1110,7 @@
     ];
 
     /**
-     * @fileoverview added by tsickle
-     * Generated from: ptsecurity-mosaic-moment-adapter-adapter.ts
-     * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+     * Generated bundle index. Do not edit.
      */
 
     exports.MC_MOMENT_DATE_ADAPTER_OPTIONS = MC_MOMENT_DATE_ADAPTER_OPTIONS;
@@ -1554,6 +1119,7 @@
     exports.McMomentDateModule = McMomentDateModule;
     exports.MomentDateAdapter = MomentDateAdapter;
     exports.MomentDateModule = MomentDateModule;
+    exports.ɵ0 = ɵ0;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
