@@ -1,2 +1,2 @@
-import { IFormatterConfig } from './IFormatterConfig';
-export declare const enUS: IFormatterConfig;
+import { DateAdapterConfig } from '@ptsecurity/cdk/datetime';
+export declare const enUS: DateAdapterConfig;

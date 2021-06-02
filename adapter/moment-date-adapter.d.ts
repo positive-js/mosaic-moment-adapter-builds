@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
-import { DateAdapter, IFormatterRangeTemplate, IFormatterRelativeTemplate, IFormatterAbsoluteTemplate, IAbsoluteDateTimeOptions } from '@ptsecurity/cdk/datetime';
-import { Moment } from 'moment';
+import { DateAdapter } from '@ptsecurity/cdk/datetime';
+import { Moment, unitOfTime } from 'moment';
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface IMcMomentDateAdapterOptions {
     /**
@@ -18,12 +18,12 @@ export interface IMcMomentDateAdapterOptions {
 export declare const MC_MOMENT_DATE_ADAPTER_OPTIONS: InjectionToken<IMcMomentDateAdapterOptions>;
 /** @docs-private */
 export declare function MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY(): IMcMomentDateAdapterOptions;
+export declare function DeprecatedMethod(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
 export declare class MomentDateAdapter extends DateAdapter<Moment> {
     private readonly options?;
-    private messageformat;
-    private readonly invalidDateErrorText;
-    private formatterConfig;
-    private get momentWithLocale();
+    firstMonth: number;
+    get lastMonth(): number;
+    private dateFormatter;
     private localeData;
     constructor(dateLocale: string, options?: IMcMomentDateAdapterOptions | undefined);
     setLocale(locale: string): void;
@@ -54,7 +54,7 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     getFirstDayOfWeek(): number;
     getNumDaysInMonth(date: Moment): number;
     clone(date: Moment): Moment;
-    createDate(year: number, month: number, date: number): Moment;
+    createDate(year: number, month?: number, date?: number): Moment;
     createDateTime(year: number, month: number, date: number, hours: number, minutes: number, seconds: number, milliseconds: number): Moment;
     today(): Moment;
     parse(value: any, parseFormat: string | string[]): Moment | null;
@@ -68,29 +68,27 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     isDateInstance(obj: any): boolean;
     isValid(date: Moment): boolean;
     invalid(): Moment;
-    relativeDate(date: Moment, template: IFormatterRelativeTemplate): string;
-    relativeShortDate(date: Moment): string;
-    relativeLongDate(date: Moment): string;
-    absoluteDate(date: Moment, params: IFormatterAbsoluteTemplate, datetime?: boolean, milliseconds?: boolean, microseconds?: boolean): string;
-    absoluteShortDate(date: Moment): string;
-    absoluteShortDateTime(date: Moment, options?: IAbsoluteDateTimeOptions): string;
+    hasSame(startDate: Moment, endDate: Moment, unit: unitOfTime.Diff): boolean;
+    diffNow(date: Moment, unit: unitOfTime.Diff): number;
+    absoluteDate(date: Moment, params: any, datetime: boolean, milliseconds: boolean): string;
     absoluteLongDate(date: Moment): string;
-    absoluteLongDateTime(date: Moment, options?: IAbsoluteDateTimeOptions): string;
-    openedRangeDate(startDate: Moment | null, endDate: Moment | null, template: IFormatterRangeTemplate): string;
-    openedRangeDateTime(startDate: Moment | null, endDate: Moment | null, template: IFormatterRangeTemplate): string;
-    rangeDate(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;
-    rangeDateTime(startDate: Moment, endDate: Moment, template: IFormatterRangeTemplate): string;
-    rangeShortDate(startDate: Moment | null, endDate?: Moment): string;
-    rangeShortDateTime(startDate: Moment | null, endDate?: Moment): string;
+    absoluteLongDateTime(date: Moment, options?: any): string;
+    absoluteShortDate(date: Moment): string;
+    absoluteShortDateTime(date: Moment, options?: any): string;
+    openedRangeDate(startDate: Moment, endDate: Moment, template: any): string;
+    openedRangeDateTime(startDate: Moment, endDate: Moment, template: any): string;
+    rangeDate(startDate: Moment, endDate: Moment, template: any): string;
+    rangeDateTime(startDate: Moment, endDate: Moment, template: any): string;
     rangeLongDate(startDate: Moment | null, endDate?: Moment): string;
     rangeLongDateTime(startDate: Moment | null, endDate?: Moment): string;
     rangeMiddleDateTime(startDate: Moment, endDate: Moment): string;
+    rangeShortDate(startDate: Moment | null, endDate?: Moment): string;
+    rangeShortDateTime(startDate: Moment | null, endDate?: Moment): string;
+    relativeDate(date: Moment, template: any): string;
+    relativeLongDate(date: Moment): string;
+    relativeShortDate(date: Moment): string;
     /** Creates a Moment instance while respecting the current UTC settings. */
     private createMoment;
-    private compileVariables;
-    private isCurrentYear;
-    private isSame;
-    private configureTranslator;
     private isNumeric;
     private findFormat;
     private parseWithSpace;
