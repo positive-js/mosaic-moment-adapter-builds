@@ -1,6 +1,7 @@
 import { InjectionToken } from '@angular/core';
 import { DateAdapter } from '@ptsecurity/cdk/datetime';
 import { Moment, unitOfTime } from 'moment';
+import * as i0 from "@angular/core";
 /** Configurable options for {@see MomentDateAdapter}. */
 export interface IMcMomentDateAdapterOptions {
     /**
@@ -95,4 +96,6 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     private parseWithSlash;
     private parseWithDash;
     private parseWithDot;
+    static ɵfac: i0.ɵɵFactoryDef<MomentDateAdapter, [{ optional: true; }, { optional: true; }]>;
+    static ɵprov: i0.ɵɵInjectableDef<MomentDateAdapter>;
 }
