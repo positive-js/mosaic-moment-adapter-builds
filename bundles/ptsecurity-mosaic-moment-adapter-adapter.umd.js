@@ -26,6 +26,7 @@
         return Object.freeze(n);
     }
 
+    var i0__namespace = /*#__PURE__*/_interopNamespace(i0);
     var _rollupMoment__default = /*#__PURE__*/_interopDefaultLegacy(_rollupMoment);
     var _rollupMoment__namespace = /*#__PURE__*/_interopNamespace(_rollupMoment);
 
@@ -255,10 +256,16 @@
                 r[k] = a[j];
         return r;
     }
-    function __spreadArray(to, from) {
-        for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-            to[j] = from[i];
-        return to;
+    function __spreadArray(to, from, pack) {
+        if (pack || arguments.length === 2)
+            for (var i = 0, l = from.length, ar; i < l; i++) {
+                if (ar || !(i in from)) {
+                    if (!ar)
+                        ar = Array.prototype.slice.call(from, 0, i);
+                    ar[i] = from[i];
+                }
+            }
+        return to.concat(ar || from);
     }
     function __await(v) {
         return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -324,18 +331,21 @@
     function __importDefault(mod) {
         return (mod && mod.__esModule) ? mod : { default: mod };
     }
-    function __classPrivateFieldGet(receiver, privateMap) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to get private field on non-instance");
-        }
-        return privateMap.get(receiver);
+    function __classPrivateFieldGet(receiver, state, kind, f) {
+        if (kind === "a" && !f)
+            throw new TypeError("Private accessor was defined without a getter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+            throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
     }
-    function __classPrivateFieldSet(receiver, privateMap, value) {
-        if (!privateMap.has(receiver)) {
-            throw new TypeError("attempted to set private field on non-instance");
-        }
-        privateMap.set(receiver, value);
-        return value;
+    function __classPrivateFieldSet(receiver, state, value, kind, f) {
+        if (kind === "m")
+            throw new TypeError("Private method is not writable");
+        if (kind === "a" && !f)
+            throw new TypeError("Private accessor was defined without a setter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+            throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
     }
 
     var enUS = {
@@ -797,8 +807,8 @@
         };
         return MomentDateAdapter;
     }(datetime.DateAdapter));
-    /** @nocollapse */ MomentDateAdapter.ɵfac = function MomentDateAdapter_Factory(t) { return new (t || MomentDateAdapter)(i0.ɵɵinject(datetime.MC_DATE_LOCALE, 8), i0.ɵɵinject(MC_MOMENT_DATE_ADAPTER_OPTIONS, 8)); };
-    /** @nocollapse */ MomentDateAdapter.ɵprov = i0.ɵɵdefineInjectable({ token: MomentDateAdapter, factory: MomentDateAdapter.ɵfac });
+    /** @nocollapse */ MomentDateAdapter.ɵfac = function MomentDateAdapter_Factory(t) { return new (t || MomentDateAdapter)(i0__namespace.ɵɵinject(datetime.MC_DATE_LOCALE, 8), i0__namespace.ɵɵinject(MC_MOMENT_DATE_ADAPTER_OPTIONS, 8)); };
+    /** @nocollapse */ MomentDateAdapter.ɵprov = i0__namespace.ɵɵdefineInjectable({ token: MomentDateAdapter, factory: MomentDateAdapter.ɵfac });
     __decorate([
         DeprecatedMethod,
         __metadata("design:type", Function),
@@ -902,7 +912,7 @@
         __metadata("design:returntype", String)
     ], MomentDateAdapter.prototype, "relativeShortDate", null);
     (function () {
-        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MomentDateAdapter, [{
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(MomentDateAdapter, [{
                 type: i0.Injectable
             }], function () {
             return [{ type: undefined, decorators: [{
@@ -932,14 +942,14 @@
         return MomentDateModule;
     }());
     /** @nocollapse */ MomentDateModule.ɵfac = function MomentDateModule_Factory(t) { return new (t || MomentDateModule)(); };
-    /** @nocollapse */ MomentDateModule.ɵmod = i0.ɵɵdefineNgModule({ type: MomentDateModule });
-    /** @nocollapse */ MomentDateModule.ɵinj = i0.ɵɵdefineInjector({ providers: [{
+    /** @nocollapse */ MomentDateModule.ɵmod = i0__namespace.ɵɵdefineNgModule({ type: MomentDateModule });
+    /** @nocollapse */ MomentDateModule.ɵinj = i0__namespace.ɵɵdefineInjector({ providers: [{
                 provide: datetime.DateAdapter,
                 useClass: MomentDateAdapter,
                 deps: [datetime.MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
             }] });
     (function () {
-        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(MomentDateModule, [{
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(MomentDateModule, [{
                 type: i0.NgModule,
                 args: [{
                         providers: [{
@@ -956,13 +966,13 @@
         return McMomentDateModule;
     }());
     /** @nocollapse */ McMomentDateModule.ɵfac = function McMomentDateModule_Factory(t) { return new (t || McMomentDateModule)(); };
-    /** @nocollapse */ McMomentDateModule.ɵmod = i0.ɵɵdefineNgModule({ type: McMomentDateModule });
-    /** @nocollapse */ McMomentDateModule.ɵinj = i0.ɵɵdefineInjector({ providers: [{
+    /** @nocollapse */ McMomentDateModule.ɵmod = i0__namespace.ɵɵdefineNgModule({ type: McMomentDateModule });
+    /** @nocollapse */ McMomentDateModule.ɵinj = i0__namespace.ɵɵdefineInjector({ providers: [{
                 provide: datetime.MC_DATE_FORMATS, useValue: MC_MOMENT_DATE_FORMATS
             }], imports: [[MomentDateModule]] });
-    (function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(McMomentDateModule, { imports: [MomentDateModule] }); })();
+    (function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0__namespace.ɵɵsetNgModuleScope(McMomentDateModule, { imports: [MomentDateModule] }); })();
     (function () {
-        (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(McMomentDateModule, [{
+        (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(McMomentDateModule, [{
                 type: i0.NgModule,
                 args: [{
                         imports: [MomentDateModule],
