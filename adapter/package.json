@@ -5,6 +5,7 @@
   "esm2015": "../esm2015/adapter/ptsecurity-mosaic-moment-adapter-adapter.js",
   "fesm2015": "../fesm2015/ptsecurity-mosaic-moment-adapter-adapter.js",
   "typings": "ptsecurity-mosaic-moment-adapter-adapter.d.ts",
+  "metadata": "ptsecurity-mosaic-moment-adapter-adapter.metadata.json",
   "sideEffects": false,
   "name": "@ptsecurity/mosaic-moment-adapter/adapter"
 }

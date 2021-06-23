@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@ptsecurity/cdk/datetime'), require('@ptsecurity/mosaic/core'), require('moment')) :
     typeof define === 'function' && define.amd ? define('@ptsecurity/mosaic-moment-adapter/adapter', ['exports', '@angular/core', '@ptsecurity/cdk/datetime', '@ptsecurity/mosaic/core', 'moment'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ptsecurity = global.ptsecurity || {}, global.ptsecurity['mosaic-moment-adapter'] = global.ptsecurity['mosaic-moment-adapter'] || {}, global.ptsecurity['mosaic-moment-adapter'].adapter = {}), global.ng.core, global.datetime, global.core, global._rollupMoment));
-}(this, (function (exports, i0, datetime, core, _rollupMoment) { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory((global.ptsecurity = global.ptsecurity || {}, global.ptsecurity['mosaic-moment-adapter'] = global.ptsecurity['mosaic-moment-adapter'] || {}, global.ptsecurity['mosaic-moment-adapter'].adapter = {}), global.ng.core, global.datetime, global.core$1, global._rollupMoment));
+}(this, (function (exports, core, datetime, core$1, _rollupMoment) { 'use strict';
 
     function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -26,7 +26,6 @@
         return Object.freeze(n);
     }
 
-    var i0__namespace = /*#__PURE__*/_interopNamespace(i0);
     var _rollupMoment__default = /*#__PURE__*/_interopDefaultLegacy(_rollupMoment);
     var _rollupMoment__namespace = /*#__PURE__*/_interopNamespace(_rollupMoment);
 
@@ -420,7 +419,7 @@
 
     var moment = _rollupMoment__default['default'] || _rollupMoment__namespace;
     /** InjectionToken for moment date adapter to configure options. */
-    var MC_MOMENT_DATE_ADAPTER_OPTIONS = new i0.InjectionToken('MC_MOMENT_DATE_ADAPTER_OPTIONS', {
+    var MC_MOMENT_DATE_ADAPTER_OPTIONS = new core.InjectionToken('MC_MOMENT_DATE_ADAPTER_OPTIONS', {
         providedIn: 'root',
         factory: MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY
     });
@@ -475,7 +474,7 @@
         MomentDateAdapter.prototype.setLocale = function (locale) {
             var _this = this;
             _super.prototype.setLocale.call(this, locale);
-            this.dateFormatter = new core.DateFormatter(this, locale);
+            this.dateFormatter = new core$1.DateFormatter(this, locale);
             this.config = locale === 'en' ? enUS : ruRU;
             var momentLocaleData = moment.localeData(locale);
             // This is our customs translations
@@ -807,8 +806,14 @@
         };
         return MomentDateAdapter;
     }(datetime.DateAdapter));
-    /** @nocollapse */ MomentDateAdapter.ɵfac = function MomentDateAdapter_Factory(t) { return new (t || MomentDateAdapter)(i0__namespace.ɵɵinject(datetime.MC_DATE_LOCALE, 8), i0__namespace.ɵɵinject(MC_MOMENT_DATE_ADAPTER_OPTIONS, 8)); };
-    /** @nocollapse */ MomentDateAdapter.ɵprov = i0__namespace.ɵɵdefineInjectable({ token: MomentDateAdapter, factory: MomentDateAdapter.ɵfac });
+    MomentDateAdapter.decorators = [
+        { type: core.Injectable }
+    ];
+    /** @nocollapse */
+    MomentDateAdapter.ctorParameters = function () { return [
+        { type: String, decorators: [{ type: core.Optional }, { type: core.Inject, args: [datetime.MC_DATE_LOCALE,] }] },
+        { type: undefined, decorators: [{ type: core.Optional }, { type: core.Inject, args: [MC_MOMENT_DATE_ADAPTER_OPTIONS,] }] }
+    ]; };
     __decorate([
         DeprecatedMethod,
         __metadata("design:type", Function),
@@ -911,23 +916,6 @@
         __metadata("design:paramtypes", [Object]),
         __metadata("design:returntype", String)
     ], MomentDateAdapter.prototype, "relativeShortDate", null);
-    (function () {
-        (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(MomentDateAdapter, [{
-                type: i0.Injectable
-            }], function () {
-            return [{ type: undefined, decorators: [{
-                            type: i0.Optional
-                        }, {
-                            type: i0.Inject,
-                            args: [datetime.MC_DATE_LOCALE]
-                        }] }, { type: undefined, decorators: [{
-                            type: i0.Optional
-                        }, {
-                            type: i0.Inject,
-                            args: [MC_MOMENT_DATE_ADAPTER_OPTIONS]
-                        }] }];
-        }, { absoluteDate: [], absoluteLongDate: [], absoluteLongDateTime: [], absoluteShortDate: [], absoluteShortDateTime: [], openedRangeDate: [], openedRangeDateTime: [], rangeDate: [], rangeDateTime: [], rangeLongDate: [], rangeLongDateTime: [], rangeMiddleDateTime: [], rangeShortDate: [], rangeShortDateTime: [], relativeDate: [], relativeLongDate: [], relativeShortDate: [] });
-    })();
 
     var MC_MOMENT_DATE_FORMATS = {
         dateInput: 'DD.MM.YYYY',
@@ -941,47 +929,30 @@
         }
         return MomentDateModule;
     }());
-    /** @nocollapse */ MomentDateModule.ɵfac = function MomentDateModule_Factory(t) { return new (t || MomentDateModule)(); };
-    /** @nocollapse */ MomentDateModule.ɵmod = i0__namespace.ɵɵdefineNgModule({ type: MomentDateModule });
-    /** @nocollapse */ MomentDateModule.ɵinj = i0__namespace.ɵɵdefineInjector({ providers: [{
-                provide: datetime.DateAdapter,
-                useClass: MomentDateAdapter,
-                deps: [datetime.MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
-            }] });
-    (function () {
-        (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(MomentDateModule, [{
-                type: i0.NgModule,
-                args: [{
-                        providers: [{
-                                provide: datetime.DateAdapter,
-                                useClass: MomentDateAdapter,
-                                deps: [datetime.MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
-                            }]
-                    }]
-            }], null, null);
-    })();
+    MomentDateModule.decorators = [
+        { type: core.NgModule, args: [{
+                    providers: [{
+                            provide: datetime.DateAdapter,
+                            useClass: MomentDateAdapter,
+                            deps: [datetime.MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
+                        }]
+                },] }
+    ];
+    var ɵ0 = MC_MOMENT_DATE_FORMATS;
     var McMomentDateModule = /** @class */ (function () {
         function McMomentDateModule() {
         }
         return McMomentDateModule;
     }());
-    /** @nocollapse */ McMomentDateModule.ɵfac = function McMomentDateModule_Factory(t) { return new (t || McMomentDateModule)(); };
-    /** @nocollapse */ McMomentDateModule.ɵmod = i0__namespace.ɵɵdefineNgModule({ type: McMomentDateModule });
-    /** @nocollapse */ McMomentDateModule.ɵinj = i0__namespace.ɵɵdefineInjector({ providers: [{
-                provide: datetime.MC_DATE_FORMATS, useValue: MC_MOMENT_DATE_FORMATS
-            }], imports: [[MomentDateModule]] });
-    (function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0__namespace.ɵɵsetNgModuleScope(McMomentDateModule, { imports: [MomentDateModule] }); })();
-    (function () {
-        (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(McMomentDateModule, [{
-                type: i0.NgModule,
-                args: [{
-                        imports: [MomentDateModule],
-                        providers: [{
-                                provide: datetime.MC_DATE_FORMATS, useValue: MC_MOMENT_DATE_FORMATS
-                            }]
-                    }]
-            }], null, null);
-    })();
+    McMomentDateModule.decorators = [
+        { type: core.NgModule, args: [{
+                    imports: [MomentDateModule],
+                    providers: [{
+                            provide: datetime.MC_DATE_FORMATS,
+                            useValue: ɵ0
+                        }]
+                },] }
+    ];
 
     /**
      * Generated bundle index. Do not edit.
@@ -994,6 +965,7 @@
     exports.McMomentDateModule = McMomentDateModule;
     exports.MomentDateAdapter = MomentDateAdapter;
     exports.MomentDateModule = MomentDateModule;
+    exports.ɵ0 = ɵ0;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
