@@ -7,10 +7,10 @@ import _rollupMoment__default from 'moment';
 
 const enUS = {
     variables: {
-        SECONDS: 's',
+        SECONDS: 'ss',
         MILLISECONDS: '.SSS',
         MICROSECONDS: '.SSSSSS',
-        MINUTES: 'm',
+        MINUTES: 'mm',
         TIME: 'HH:mm',
         DAY: 'D',
         MONTH: 'MMM',
@@ -42,10 +42,10 @@ const enUS = {
 
 const ruRU = {
     variables: {
-        SECONDS: 's',
+        SECONDS: 'ss',
         MILLISECONDS: ',SSS',
         MICROSECONDS: ',SSSSSS',
-        MINUTES: 'm',
+        MINUTES: 'mm',
         TIME: 'HH:mm',
         DAY: 'D',
         MONTH: 'MMM',

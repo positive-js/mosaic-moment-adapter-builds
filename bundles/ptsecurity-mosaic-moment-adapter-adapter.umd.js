@@ -349,10 +349,10 @@
 
     var enUS = {
         variables: {
-            SECONDS: 's',
+            SECONDS: 'ss',
             MILLISECONDS: '.SSS',
             MICROSECONDS: '.SSSSSS',
-            MINUTES: 'm',
+            MINUTES: 'mm',
             TIME: 'HH:mm',
             DAY: 'D',
             MONTH: 'MMM',
@@ -384,10 +384,10 @@
 
     var ruRU = {
         variables: {
-            SECONDS: 's',
+            SECONDS: 'ss',
             MILLISECONDS: ',SSS',
             MICROSECONDS: ',SSSSSS',
-            MINUTES: 'm',
+            MINUTES: 'mm',
             TIME: 'HH:mm',
             DAY: 'D',
             MONTH: 'MMM',
