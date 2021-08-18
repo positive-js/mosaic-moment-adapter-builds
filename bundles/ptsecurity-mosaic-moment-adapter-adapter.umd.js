@@ -376,7 +376,7 @@
         },
         dayOfWeekNames: {
             long: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-            short: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
             narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S']
         },
         firstDayOfWeek: 0
@@ -411,7 +411,7 @@
         },
         dayOfWeekNames: {
             long: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-            short: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+            short: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
             narrow: ['В', 'П', 'В', 'С', 'Ч', 'П', 'С']
         },
         firstDayOfWeek: 1
@@ -485,8 +485,9 @@
                         format: this.config.monthNames.short.formatted,
                         standalone: this.config.monthNames.short.standalone
                     },
+                    weekdays: this.config.dayOfWeekNames.long,
                     weekdaysShort: this.config.dayOfWeekNames.short,
-                    weekdays: this.config.dayOfWeekNames.long
+                    weekdaysMin: this.config.dayOfWeekNames.narrow
                 });
             }
             this.localeData = {
