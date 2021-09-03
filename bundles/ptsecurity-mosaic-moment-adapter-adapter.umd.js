@@ -459,18 +459,9 @@
         function MomentDateAdapter(dateLocale, options) {
             var _this = _super.call(this) || this;
             _this.options = options;
-            _this.firstMonth = 0;
             _this.setLocale(dateLocale || moment.locale());
             return _this;
         }
-        Object.defineProperty(MomentDateAdapter.prototype, "lastMonth", {
-            get: function () {
-                // tslint:disable-next-line:binary-expression-operand-order no-magic-numbers
-                return 11 + this.firstMonth;
-            },
-            enumerable: false,
-            configurable: true
-        });
         MomentDateAdapter.prototype.setLocale = function (locale) {
             var _this = this;
             _super.prototype.setLocale.call(this, locale);
@@ -494,7 +485,7 @@
                 firstDayOfWeek: this.config.firstDayOfWeek,
                 longMonths: momentLocaleData.months(),
                 shortMonths: momentLocaleData.monthsShort(),
-                dates: range(31, function (i) { return _this.createDate(2017, _this.firstMonth, i + 1).format('D'); }),
+                dates: range(31, function (i) { return _this.createDate(2017, 0, i + 1).format('D'); }),
                 longDaysOfWeek: momentLocaleData.weekdays(),
                 shortDaysOfWeek: momentLocaleData.weekdaysShort(),
                 narrowDaysOfWeek: momentLocaleData.weekdaysMin()
@@ -551,8 +542,8 @@
             if (date === void 0) { date = 1; }
             // Moment.js will create an invalid date if any of the components are out of bounds, but we
             // explicitly check each case so we can throw more descriptive errors.
-            if (month < this.firstMonth || month > this.lastMonth) {
-                throw Error("Invalid month index \"" + month + "\".\n                Month index has to be between " + this.firstMonth + " and " + this.lastMonth + ".");
+            if (month < 0 || month > 11) {
+                throw Error("Invalid month index \"" + month + "\". Month index has to be between 0 and 11.");
             }
             if (date < 1) {
                 throw Error("Invalid date \"" + date + "\". Date has to be greater than 0.");

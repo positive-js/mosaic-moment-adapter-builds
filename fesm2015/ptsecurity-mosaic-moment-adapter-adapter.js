@@ -112,12 +112,7 @@ class MomentDateAdapter extends DateAdapter {
     constructor(dateLocale, options) {
         super();
         this.options = options;
-        this.firstMonth = 0;
         this.setLocale(dateLocale || moment.locale());
-    }
-    get lastMonth() {
-        // tslint:disable-next-line:binary-expression-operand-order no-magic-numbers
-        return 11 + this.firstMonth;
     }
     setLocale(locale) {
         super.setLocale(locale);
@@ -141,7 +136,7 @@ class MomentDateAdapter extends DateAdapter {
             firstDayOfWeek: this.config.firstDayOfWeek,
             longMonths: momentLocaleData.months(),
             shortMonths: momentLocaleData.monthsShort(),
-            dates: range(31, (i) => this.createDate(2017, this.firstMonth, i + 1).format('D')),
+            dates: range(31, (i) => this.createDate(2017, 0, i + 1).format('D')),
             longDaysOfWeek: momentLocaleData.weekdays(),
             shortDaysOfWeek: momentLocaleData.weekdaysShort(),
             narrowDaysOfWeek: momentLocaleData.weekdaysMin()
@@ -196,9 +191,8 @@ class MomentDateAdapter extends DateAdapter {
     createDate(year, month = 0, date = 1) {
         // Moment.js will create an invalid date if any of the components are out of bounds, but we
         // explicitly check each case so we can throw more descriptive errors.
-        if (month < this.firstMonth || month > this.lastMonth) {
-            throw Error(`Invalid month index "${month}".
-                Month index has to be between ${this.firstMonth} and ${this.lastMonth}.`);
+        if (month < 0 || month > 11) {
+            throw Error(`Invalid month index "${month}". Month index has to be between 0 and 11.`);
         }
         if (date < 1) {
             throw Error(`Invalid date "${date}". Date has to be greater than 0.`);

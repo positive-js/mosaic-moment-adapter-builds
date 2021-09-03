@@ -21,8 +21,6 @@ export declare function MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY(): IMcMomentDateA
 export declare function DeprecatedMethod(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
 export declare class MomentDateAdapter extends DateAdapter<Moment> {
     private readonly options?;
-    firstMonth: number;
-    get lastMonth(): number;
     private dateFormatter;
     private localeData;
     constructor(dateLocale: string, options?: IMcMomentDateAdapterOptions | undefined);
