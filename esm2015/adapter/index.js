@@ -2,30 +2,42 @@ import { NgModule } from '@angular/core';
 import { DateAdapter, MC_DATE_FORMATS, MC_DATE_LOCALE } from '@ptsecurity/cdk/datetime';
 import { MC_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from './moment-date-adapter';
 import { MC_MOMENT_DATE_FORMATS } from './moment-date-formats';
+import * as i0 from "@angular/core";
 export * from './moment-date-adapter';
 export * from './moment-date-formats';
 export class MomentDateModule {
 }
-MomentDateModule.decorators = [
-    { type: NgModule, args: [{
-                providers: [{
-                        provide: DateAdapter,
-                        useClass: MomentDateAdapter,
-                        deps: [MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
-                    }]
-            },] }
-];
-const ɵ0 = MC_MOMENT_DATE_FORMATS;
+/** @nocollapse */ MomentDateModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: MomentDateModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+/** @nocollapse */ MomentDateModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: MomentDateModule });
+/** @nocollapse */ MomentDateModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: MomentDateModule, providers: [{
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
+        }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: MomentDateModule, decorators: [{
+            type: NgModule,
+            args: [{
+                    providers: [{
+                            provide: DateAdapter,
+                            useClass: MomentDateAdapter,
+                            deps: [MC_DATE_LOCALE, MC_MOMENT_DATE_ADAPTER_OPTIONS]
+                        }]
+                }]
+        }] });
 export class McMomentDateModule {
 }
-McMomentDateModule.decorators = [
-    { type: NgModule, args: [{
-                imports: [MomentDateModule],
-                providers: [{
-                        provide: MC_DATE_FORMATS,
-                        useValue: ɵ0
-                    }]
-            },] }
-];
-export { ɵ0 };
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9wYWNrYWdlcy9tb3NhaWMtbW9tZW50LWFkYXB0ZXIvYWRhcHRlci9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBQ3pDLE9BQU8sRUFBRSxXQUFXLEVBQUUsZUFBZSxFQUFFLGNBQWMsRUFBRSxNQUFNLDBCQUEwQixDQUFDO0FBRXhGLE9BQU8sRUFBRSw4QkFBOEIsRUFBRSxpQkFBaUIsRUFBRSxNQUFNLHVCQUF1QixDQUFDO0FBQzFGLE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxNQUFNLHVCQUF1QixDQUFDO0FBRy9ELGNBQWMsdUJBQXVCLENBQUM7QUFDdEMsY0FBYyx1QkFBdUIsQ0FBQztBQVN0QyxNQUFNLE9BQU8sZ0JBQWdCOzs7WUFQNUIsUUFBUSxTQUFDO2dCQUNOLFNBQVMsRUFBRSxDQUFDO3dCQUNSLE9BQU8sRUFBRSxXQUFXO3dCQUNwQixRQUFRLEVBQUUsaUJBQWlCO3dCQUMzQixJQUFJLEVBQUUsQ0FBQyxjQUFjLEVBQUUsOEJBQThCLENBQUM7cUJBQ3pELENBQUM7YUFDTDs7V0FNMkMsc0JBQXNCO0FBR2xFLE1BQU0sT0FBTyxrQkFBa0I7OztZQU45QixRQUFRLFNBQUM7Z0JBQ04sT0FBTyxFQUFFLENBQUMsZ0JBQWdCLENBQUM7Z0JBQzNCLFNBQVMsRUFBRSxDQUFDO3dCQUNSLE9BQU8sRUFBRSxlQUFlO3dCQUFFLFFBQVEsSUFBd0I7cUJBQzdELENBQUM7YUFDTCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBEYXRlQWRhcHRlciwgTUNfREFURV9GT1JNQVRTLCBNQ19EQVRFX0xPQ0FMRSB9IGZyb20gJ0BwdHNlY3VyaXR5L2Nkay9kYXRldGltZSc7XG5cbmltcG9ydCB7IE1DX01PTUVOVF9EQVRFX0FEQVBURVJfT1BUSU9OUywgTW9tZW50RGF0ZUFkYXB0ZXIgfSBmcm9tICcuL21vbWVudC1kYXRlLWFkYXB0ZXInO1xuaW1wb3J0IHsgTUNfTU9NRU5UX0RBVEVfRk9STUFUUyB9IGZyb20gJy4vbW9tZW50LWRhdGUtZm9ybWF0cyc7XG5cblxuZXhwb3J0ICogZnJvbSAnLi9tb21lbnQtZGF0ZS1hZGFwdGVyJztcbmV4cG9ydCAqIGZyb20gJy4vbW9tZW50LWRhdGUtZm9ybWF0cyc7XG5cbkBOZ01vZHVsZSh7XG4gICAgcHJvdmlkZXJzOiBbe1xuICAgICAgICBwcm92aWRlOiBEYXRlQWRhcHRlcixcbiAgICAgICAgdXNlQ2xhc3M6IE1vbWVudERhdGVBZGFwdGVyLFxuICAgICAgICBkZXBzOiBbTUNfREFURV9MT0NBTEUsIE1DX01PTUVOVF9EQVRFX0FEQVBURVJfT1BUSU9OU11cbiAgICB9XVxufSlcbmV4cG9ydCBjbGFzcyBNb21lbnREYXRlTW9kdWxlIHt9XG5cbkBOZ01vZHVsZSh7XG4gICAgaW1wb3J0czogW01vbWVudERhdGVNb2R1bGVdLFxuICAgIHByb3ZpZGVyczogW3tcbiAgICAgICAgcHJvdmlkZTogTUNfREFURV9GT1JNQVRTLCB1c2VWYWx1ZTogTUNfTU9NRU5UX0RBVEVfRk9STUFUU1xuICAgIH1dXG59KVxuZXhwb3J0IGNsYXNzIE1jTW9tZW50RGF0ZU1vZHVsZSB7fVxuIl19
+/** @nocollapse */ McMomentDateModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: McMomentDateModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
+/** @nocollapse */ McMomentDateModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: McMomentDateModule, imports: [MomentDateModule] });
+/** @nocollapse */ McMomentDateModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: McMomentDateModule, providers: [{
+            provide: MC_DATE_FORMATS, useValue: MC_MOMENT_DATE_FORMATS
+        }], imports: [[MomentDateModule]] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.5", ngImport: i0, type: McMomentDateModule, decorators: [{
+            type: NgModule,
+            args: [{
+                    imports: [MomentDateModule],
+                    providers: [{
+                            provide: MC_DATE_FORMATS, useValue: MC_MOMENT_DATE_FORMATS
+                        }]
+                }]
+        }] });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi9wYWNrYWdlcy9tb3NhaWMtbW9tZW50LWFkYXB0ZXIvYWRhcHRlci9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsUUFBUSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBQ3pDLE9BQU8sRUFBRSxXQUFXLEVBQUUsZUFBZSxFQUFFLGNBQWMsRUFBRSxNQUFNLDBCQUEwQixDQUFDO0FBRXhGLE9BQU8sRUFBRSw4QkFBOEIsRUFBRSxpQkFBaUIsRUFBRSxNQUFNLHVCQUF1QixDQUFDO0FBQzFGLE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxNQUFNLHVCQUF1QixDQUFDOztBQUcvRCxjQUFjLHVCQUF1QixDQUFDO0FBQ3RDLGNBQWMsdUJBQXVCLENBQUM7QUFTdEMsTUFBTSxPQUFPLGdCQUFnQjs7Z0lBQWhCLGdCQUFnQjtpSUFBaEIsZ0JBQWdCO2lJQUFoQixnQkFBZ0IsYUFOZCxDQUFDO1lBQ1IsT0FBTyxFQUFFLFdBQVc7WUFDcEIsUUFBUSxFQUFFLGlCQUFpQjtZQUMzQixJQUFJLEVBQUUsQ0FBQyxjQUFjLEVBQUUsOEJBQThCLENBQUM7U0FDekQsQ0FBQzsyRkFFTyxnQkFBZ0I7a0JBUDVCLFFBQVE7bUJBQUM7b0JBQ04sU0FBUyxFQUFFLENBQUM7NEJBQ1IsT0FBTyxFQUFFLFdBQVc7NEJBQ3BCLFFBQVEsRUFBRSxpQkFBaUI7NEJBQzNCLElBQUksRUFBRSxDQUFDLGNBQWMsRUFBRSw4QkFBOEIsQ0FBQzt5QkFDekQsQ0FBQztpQkFDTDs7QUFTRCxNQUFNLE9BQU8sa0JBQWtCOztrSUFBbEIsa0JBQWtCO21JQUFsQixrQkFBa0IsWUFSbEIsZ0JBQWdCO21JQVFoQixrQkFBa0IsYUFKaEIsQ0FBQztZQUNSLE9BQU8sRUFBRSxlQUFlLEVBQUUsUUFBUSxFQUFFLHNCQUFzQjtTQUM3RCxDQUFDLFlBSE8sQ0FBQyxnQkFBZ0IsQ0FBQzsyRkFLbEIsa0JBQWtCO2tCQU45QixRQUFRO21CQUFDO29CQUNOLE9BQU8sRUFBRSxDQUFDLGdCQUFnQixDQUFDO29CQUMzQixTQUFTLEVBQUUsQ0FBQzs0QkFDUixPQUFPLEVBQUUsZUFBZSxFQUFFLFFBQVEsRUFBRSxzQkFBc0I7eUJBQzdELENBQUM7aUJBQ0wiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgRGF0ZUFkYXB0ZXIsIE1DX0RBVEVfRk9STUFUUywgTUNfREFURV9MT0NBTEUgfSBmcm9tICdAcHRzZWN1cml0eS9jZGsvZGF0ZXRpbWUnO1xuXG5pbXBvcnQgeyBNQ19NT01FTlRfREFURV9BREFQVEVSX09QVElPTlMsIE1vbWVudERhdGVBZGFwdGVyIH0gZnJvbSAnLi9tb21lbnQtZGF0ZS1hZGFwdGVyJztcbmltcG9ydCB7IE1DX01PTUVOVF9EQVRFX0ZPUk1BVFMgfSBmcm9tICcuL21vbWVudC1kYXRlLWZvcm1hdHMnO1xuXG5cbmV4cG9ydCAqIGZyb20gJy4vbW9tZW50LWRhdGUtYWRhcHRlcic7XG5leHBvcnQgKiBmcm9tICcuL21vbWVudC1kYXRlLWZvcm1hdHMnO1xuXG5ATmdNb2R1bGUoe1xuICAgIHByb3ZpZGVyczogW3tcbiAgICAgICAgcHJvdmlkZTogRGF0ZUFkYXB0ZXIsXG4gICAgICAgIHVzZUNsYXNzOiBNb21lbnREYXRlQWRhcHRlcixcbiAgICAgICAgZGVwczogW01DX0RBVEVfTE9DQUxFLCBNQ19NT01FTlRfREFURV9BREFQVEVSX09QVElPTlNdXG4gICAgfV1cbn0pXG5leHBvcnQgY2xhc3MgTW9tZW50RGF0ZU1vZHVsZSB7fVxuXG5ATmdNb2R1bGUoe1xuICAgIGltcG9ydHM6IFtNb21lbnREYXRlTW9kdWxlXSxcbiAgICBwcm92aWRlcnM6IFt7XG4gICAgICAgIHByb3ZpZGU6IE1DX0RBVEVfRk9STUFUUywgdXNlVmFsdWU6IE1DX01PTUVOVF9EQVRFX0ZPUk1BVFNcbiAgICB9XVxufSlcbmV4cG9ydCBjbGFzcyBNY01vbWVudERhdGVNb2R1bGUge31cbiJdfQ==
