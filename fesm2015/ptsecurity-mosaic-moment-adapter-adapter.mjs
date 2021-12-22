@@ -1,8 +1,6 @@
 import * as i0 from '@angular/core';
 import { InjectionToken, Injectable, Optional, Inject, NgModule } from '@angular/core';
 import { DateAdapter, MC_DATE_LOCALE, MC_DATE_FORMATS } from '@ptsecurity/cdk/datetime';
-import { __decorate, __metadata } from 'tslib';
-import { DateFormatter } from '@ptsecurity/mosaic/core';
 import * as _rollupMoment from 'moment';
 import _rollupMoment__default from 'moment';
 
@@ -76,6 +74,7 @@ const ruRU = {
     firstDayOfWeek: 1
 };
 
+// tslint:disable:no-magic-numbers
 const moment = _rollupMoment__default || _rollupMoment;
 /** InjectionToken for moment date adapter to configure options. */
 const MC_MOMENT_DATE_ADAPTER_OPTIONS = new InjectionToken('MC_MOMENT_DATE_ADAPTER_OPTIONS', {
@@ -98,17 +97,6 @@ function range(length, valueFunction) {
     }
     return valuesArray;
 }
-// @ts-ignore
-function DeprecatedMethod(target, key, descriptor) {
-    const origin = descriptor.value;
-    // tslint:disable-next-line:no-function-expression only-arrow-functions
-    descriptor.value = function (...args) {
-        console.warn(`Found use of deprecated method ${key}, it was moved in DateFormatter. ` +
-            `The deprecated method will be removed in 13.0.0.`);
-        return origin.apply(this, args);
-    };
-    return descriptor;
-}
 class MomentDateAdapter extends DateAdapter {
     constructor(dateLocale, options) {
         super();
@@ -117,7 +105,6 @@ class MomentDateAdapter extends DateAdapter {
     }
     setLocale(locale) {
         super.setLocale(locale);
-        this.dateFormatter = new DateFormatter(this, locale);
         this.config = locale === 'en' ? enUS : ruRU;
         let momentLocaleData = moment.localeData(locale);
         // This is our customs translations
@@ -286,57 +273,6 @@ class MomentDateAdapter extends DateAdapter {
     diffNow(date, unit) {
         return date.diff(this.today(), unit);
     }
-    absoluteDate(date, params, datetime, milliseconds) {
-        return this.dateFormatter.absoluteDate(date, params, datetime, milliseconds);
-    }
-    absoluteLongDate(date) {
-        return this.dateFormatter.absoluteLongDate(date);
-    }
-    absoluteLongDateTime(date, options) {
-        return this.dateFormatter.absoluteLongDateTime(date, options);
-    }
-    absoluteShortDate(date) {
-        return this.dateFormatter.absoluteShortDate(date);
-    }
-    absoluteShortDateTime(date, options) {
-        return this.dateFormatter.absoluteShortDateTime(date, options);
-    }
-    openedRangeDate(startDate, endDate, template) {
-        return this.dateFormatter.openedRangeDate(startDate, endDate, template);
-    }
-    openedRangeDateTime(startDate, endDate, template) {
-        return this.dateFormatter.openedRangeDateTime(startDate, endDate, template);
-    }
-    rangeDate(startDate, endDate, template) {
-        return this.dateFormatter.rangeDate(startDate, endDate, template);
-    }
-    rangeDateTime(startDate, endDate, template) {
-        return this.dateFormatter.rangeDateTime(startDate, endDate, template);
-    }
-    rangeLongDate(startDate, endDate) {
-        return this.dateFormatter.rangeLongDate(startDate, endDate);
-    }
-    rangeLongDateTime(startDate, endDate) {
-        return this.dateFormatter.rangeLongDateTime(startDate, endDate);
-    }
-    rangeMiddleDateTime(startDate, endDate) {
-        return this.dateFormatter.rangeMiddleDateTime(startDate, endDate);
-    }
-    rangeShortDate(startDate, endDate) {
-        return this.dateFormatter.rangeShortDate(startDate, endDate);
-    }
-    rangeShortDateTime(startDate, endDate) {
-        return this.dateFormatter.rangeShortDateTime(startDate, endDate);
-    }
-    relativeDate(date, template) {
-        return this.dateFormatter.relativeDate(date, template);
-    }
-    relativeLongDate(date) {
-        return this.dateFormatter.relativeLongDate(date);
-    }
-    relativeShortDate(date) {
-        return this.dateFormatter.relativeShortDate(date);
-    }
     /** Creates a Moment instance while respecting the current UTC settings. */
     createMoment(...args) {
         var _a;
@@ -445,108 +381,6 @@ class MomentDateAdapter extends DateAdapter {
 }
 /** @nocollapse */ /** @nocollapse */ MomentDateAdapter.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.0", ngImport: i0, type: MomentDateAdapter, deps: [{ token: MC_DATE_LOCALE, optional: true }, { token: MC_MOMENT_DATE_ADAPTER_OPTIONS, optional: true }], target: i0.ɵɵFactoryTarget.Injectable });
 /** @nocollapse */ /** @nocollapse */ MomentDateAdapter.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "13.1.0", ngImport: i0, type: MomentDateAdapter });
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Boolean, Boolean]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "absoluteDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "absoluteLongDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "absoluteLongDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "absoluteShortDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "absoluteShortDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "openedRangeDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "openedRangeDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeLongDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeLongDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeMiddleDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeShortDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "rangeShortDateTime", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "relativeDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "relativeLongDate", null);
-__decorate([
-    DeprecatedMethod,
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", String)
-], MomentDateAdapter.prototype, "relativeShortDate", null);
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.0", ngImport: i0, type: MomentDateAdapter, decorators: [{
             type: Injectable
         }], ctorParameters: function () {
@@ -561,7 +395,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.0", ngImpor
                         type: Inject,
                         args: [MC_MOMENT_DATE_ADAPTER_OPTIONS]
                     }] }];
-    }, propDecorators: { absoluteDate: [], absoluteLongDate: [], absoluteLongDateTime: [], absoluteShortDate: [], absoluteShortDateTime: [], openedRangeDate: [], openedRangeDateTime: [], rangeDate: [], rangeDateTime: [], rangeLongDate: [], rangeLongDateTime: [], rangeMiddleDateTime: [], rangeShortDate: [], rangeShortDateTime: [], relativeDate: [], relativeLongDate: [], relativeShortDate: [] } });
+    } });
 
 const MC_MOMENT_DATE_FORMATS = {
     dateInput: 'DD.MM.YYYY',
@@ -610,5 +444,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.0", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { DeprecatedMethod, MC_MOMENT_DATE_ADAPTER_OPTIONS, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MC_MOMENT_DATE_FORMATS, McMomentDateModule, MomentDateAdapter, MomentDateModule };
+export { MC_MOMENT_DATE_ADAPTER_OPTIONS, MC_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY, MC_MOMENT_DATE_FORMATS, McMomentDateModule, MomentDateAdapter, MomentDateModule };
 //# sourceMappingURL=ptsecurity-mosaic-moment-adapter-adapter.mjs.map
