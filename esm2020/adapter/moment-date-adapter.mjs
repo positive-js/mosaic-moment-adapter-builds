@@ -315,9 +315,9 @@ export class MomentDateAdapter extends DateAdapter {
         return this.createMoment(value, 'DD.MM.YYYY', this.locale);
     }
 }
-/** @nocollapse */ /** @nocollapse */ MomentDateAdapter.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.1", ngImport: i0, type: MomentDateAdapter, deps: [{ token: MC_DATE_LOCALE, optional: true }, { token: MC_MOMENT_DATE_ADAPTER_OPTIONS, optional: true }], target: i0.ɵɵFactoryTarget.Injectable });
-/** @nocollapse */ /** @nocollapse */ MomentDateAdapter.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "13.1.1", ngImport: i0, type: MomentDateAdapter });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.1", ngImport: i0, type: MomentDateAdapter, decorators: [{
+/** @nocollapse */ /** @nocollapse */ MomentDateAdapter.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "13.1.2", ngImport: i0, type: MomentDateAdapter, deps: [{ token: MC_DATE_LOCALE, optional: true }, { token: MC_MOMENT_DATE_ADAPTER_OPTIONS, optional: true }], target: i0.ɵɵFactoryTarget.Injectable });
+/** @nocollapse */ /** @nocollapse */ MomentDateAdapter.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "13.1.2", ngImport: i0, type: MomentDateAdapter });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.1.2", ngImport: i0, type: MomentDateAdapter, decorators: [{
             type: Injectable
         }], ctorParameters: function () { return [{ type: undefined, decorators: [{
                     type: Optional
