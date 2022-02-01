@@ -273,6 +273,9 @@ class MomentDateAdapter extends DateAdapter {
     diffNow(date, unit) {
         return date.diff(this.today(), unit);
     }
+    daysFromToday(date) {
+        return this.diffNow(date, 'days');
+    }
     /** Creates a Moment instance while respecting the current UTC settings. */
     createMoment(...args) {
         var _a;

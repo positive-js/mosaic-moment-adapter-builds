@@ -67,6 +67,7 @@ export declare class MomentDateAdapter extends DateAdapter<Moment> {
     invalid(): Moment;
     hasSame(startDate: Moment, endDate: Moment, unit: unitOfTime.Diff): boolean;
     diffNow(date: Moment, unit: unitOfTime.Diff): number;
+    daysFromToday(date: Moment): number;
     /** Creates a Moment instance while respecting the current UTC settings. */
     private createMoment;
     private isNumeric;
