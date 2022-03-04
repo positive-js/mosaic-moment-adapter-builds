@@ -1,6 +1,6 @@
 {
     "name": "@ptsecurity/mosaic-moment-adapter",
-    "version": "13.1.0-f15e1450",
+    "version": "13.1.0-48f82f40",
     "description": "Mosaic Moment Adapter",
     "repository": {
         "type": "git",
@@ -19,9 +19,9 @@
     },
     "homepage": "https://github.com/positive-js/mosaic#readme",
     "peerDependencies": {
-        "@angular/core": "^13.1.0-f15e1450",
-        "@angular/cdk": "^13.1.0-f15e1450",
-        "@ptsecurity/cdk": "^13.1.0-f15e1450",
+        "@angular/core": "^13.1.0-48f82f40",
+        "@angular/cdk": "^13.1.0-48f82f40",
+        "@ptsecurity/cdk": "^13.1.0-48f82f40",
         "@messageformat/core": "^3.0.0",
         "moment": "^2.24.0"
     },
